@@ -112,7 +112,6 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Context\DbContext.cs" />
-    <Compile Include="Model\Entity\Mahasiswa.cs" />
     <Compile Include="Model\Entity\Role.cs" />
     <Compile Include="Model\Repository\RoleRepository.cs" />
     <Compile Include="Program.cs" />

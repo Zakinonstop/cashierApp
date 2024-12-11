@@ -8,7 +8,7 @@ namespace CashierFormApp.Model.Entity
 {
     public class Role
     {
-        public string role_id { get; set; }
+        public int role_id { get; set; }
         public string name { get; set; }
     }
 }

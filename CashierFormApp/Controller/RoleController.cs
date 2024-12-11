@@ -17,7 +17,6 @@ namespace CashierFormApp.Controller
         {
             int result = 0;
             
-            // cek nama yang diinputkan tidak boleh kosong
             if (string.IsNullOrEmpty(role.name))
             {
                 MessageBox.Show("Nama harus diisi !!!", "Peringatan",
@@ -25,14 +24,12 @@ namespace CashierFormApp.Controller
                 return 0;
             }
             
-            // membuat objek context menggunakan blok using
             using (DbContext context = new DbContext())
             {
-                // membuat objek class repository
                 _repository = new RoleRepository(context);
-                // panggil method Create class repository untuk menambahkan data
                 result = _repository.Create(role);
             }
+
             if (result > 0)
             {
                 MessageBox.Show("Data berhasil disimpan !", "Informasi",
@@ -41,6 +38,36 @@ namespace CashierFormApp.Controller
             else
                 MessageBox.Show("Data gagal disimpan !!!", "Peringatan",
                 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            return result;
+        }
+
+        public int Delete(Role role)
+        {
+            int result = 0;
+
+            DialogResult dialogResult = MessageBox.Show("Anda yakin akan menghapus data?", "Peringatan", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+            if (dialogResult == DialogResult.No)
+            {
+                return 0;
+            }
+
+            using (DbContext context = new DbContext())
+            {
+                _repository = new RoleRepository(context);
+                result = _repository.Delete(role);
+            }
+
+            if (result > 0)
+            {
+                MessageBox.Show("Data berhasil dihapus !", "Informasi",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+                MessageBox.Show("Data gagal dihapus !!!", "Peringatan",
+                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
             return result;
         }
     }
