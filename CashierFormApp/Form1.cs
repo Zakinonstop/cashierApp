@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CashierFormApp.Model.Entity;
+using CashierFormApp.Controller;
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,9 +20,17 @@ namespace CashierFormApp
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void btnSubmitRole_Click(object sender, EventArgs e)
         {
 
+            Role role = new Role();
+            role.name = txtName.Text;
+
+            RoleController roleController = new RoleController();
+            roleController.Create(role);
+
+            // Clear the input field after creating the role
+            txtName.Clear();
         }
     }
 }
