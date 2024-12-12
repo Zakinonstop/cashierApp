@@ -3,7 +3,6 @@ using CashierFormApp.Model.Entity;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +12,6 @@ namespace CashierFormApp.Model.Repository
     internal class RoleRepository
     {
         private MySqlConnection _conn;
-
         public RoleRepository(DbContext context)
         {
             _conn = context.Conn;
@@ -22,15 +20,13 @@ namespace CashierFormApp.Model.Repository
         {
             int result = 0;
 
-            string sql = @"insert into role (name) values (@name)";
+            string sql = @"INSERT INTO role (name) values (@name)";
 
             using (MySqlCommand cmd = new MySqlCommand(sql, _conn))
             {
-                // mendaftarkan parameter dan mengeset nilainya
                 cmd.Parameters.AddWithValue("@name", role.name);
                 try
                 {
-                    // jalankan perintah INSERT dan tampung hasilnya ke dalam variabel result
                     result = cmd.ExecuteNonQuery();
                 }
                 catch (Exception ex)
@@ -40,5 +36,30 @@ namespace CashierFormApp.Model.Repository
             }
             return result;
         }
+
+        public int Delete(Role role)
+        {
+            int result = 0;
+
+            string sql = @"DELETE FROM role WHERE `role`.`role_id` = @role_id";
+
+            using (MySqlCommand cmd = new MySqlCommand(sql, _conn))
+            {
+                cmd.Parameters.AddWithValue("@role_id", role.role_id);
+                try
+                {
+                    result = cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.Print("Delete error: {0}", ex.Message);
+                }
+            }
+            return result;
+        }
+
+
+
+
     }
 }
