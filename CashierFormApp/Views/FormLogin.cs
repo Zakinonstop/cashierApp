@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CashierFormApp.Views;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,14 @@ namespace CashierFormApp.View
         public FormLogin()
         {
             InitializeComponent();
+        }
+
+        private void btnLogin(object sender, EventArgs e)
+        {
+            Dashboard dashboard = new Dashboard();
+            dashboard.FormClosed += (s, args) => Application.Exit();
+            dashboard.Show();
+            this.Hide();
         }
     }
 }

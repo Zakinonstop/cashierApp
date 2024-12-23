@@ -50,6 +50,7 @@
             this.guna2ButtonLogin.Size = new System.Drawing.Size(100, 45);
             this.guna2ButtonLogin.TabIndex = 1;
             this.guna2ButtonLogin.Text = "Login";
+            this.guna2ButtonLogin.Click += new System.EventHandler(this.btnLogin);
             // 
             // guna2Panel1
             // 

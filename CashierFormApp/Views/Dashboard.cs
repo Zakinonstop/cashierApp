@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CashierFormApp.Views.Components;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,34 @@ namespace CashierFormApp.Views
         public Dashboard()
         {
             InitializeComponent();
+            MainContent mainContent = new MainContent();
+            AddUserControl(mainContent);
+        }
+
+        private void AddUserControl(UserControl userControl)
+        {
+            userControl.Dock = DockStyle.Fill;
+            panelContainer.Controls.Clear();
+            panelContainer.Controls.Add(userControl);
+            userControl.BringToFront();
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            MainContent mainContent = new MainContent();
+            AddUserControl(mainContent);
+        }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            Product product = new Product();
+            AddUserControl(product);
+        }
+
+        private void guna2Button3_Click(object sender, EventArgs e)
+        {
+            Transaction transaction = new Transaction();
+            AddUserControl(transaction);
         }
     }
 }

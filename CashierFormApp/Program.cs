@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using CashierFormApp.View;
 using CashierFormApp.Views;
 
 namespace CashierFormApp
@@ -18,7 +18,7 @@ namespace CashierFormApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormTransaction());
+            Application.Run(new FormLogin());
         }
     }
 }

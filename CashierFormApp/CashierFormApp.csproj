@@ -126,6 +126,24 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Components\MainContent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Components\MainContent.Designer.cs">
+      <DependentUpon>MainContent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Components\Product.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Components\Product.Designer.cs">
+      <DependentUpon>Product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Components\Transaction.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Components\Transaction.Designer.cs">
+      <DependentUpon>Transaction.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +166,15 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Components\MainContent.resx">
+      <DependentUpon>MainContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Components\Product.resx">
+      <DependentUpon>Product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Components\Transaction.resx">
+      <DependentUpon>Transaction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
@@ -172,14 +199,30 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Components\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\account_circle_24dp_EF233C_FILL0_wght400_GRAD0_opsz241.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\delete_24dp_000_FILL0_wght400_GRAD0_opsz24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-dashboard-layout-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-dashboard-layout-24 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-transaction-24 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-transaction-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-product-24 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-product-24.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
