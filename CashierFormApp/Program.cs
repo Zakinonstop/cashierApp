@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CashierFormApp.View;
 using CashierFormApp.Views;
+using CashierFormApp.Views.Components;
 
 namespace CashierFormApp
 {
