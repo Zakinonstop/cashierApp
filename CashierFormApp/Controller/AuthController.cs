@@ -34,6 +34,11 @@ namespace CashierFormApp.Controller
             {
                 if (username == data[0].username && password == data[0].password)
                 {
+                    var Session = SessionController.Instance;
+
+                    Session.Username = data[0].username;
+                    Session.RoleId = data[0].role_id;
+
                     return (true, "Login successful");
                 }
             }

@@ -1,4 +1,5 @@
-﻿using CashierFormApp.View;
+﻿using CashierFormApp.Controller;
+using CashierFormApp.View;
 using CashierFormApp.Views.Components;
 using System;
 using System.Collections.Generic;
@@ -19,8 +20,10 @@ namespace CashierFormApp.Views
 
         private void LoadUserControl(string controlName)
         {
-            labelUsername.Text = "zakinonstop";
-            labelRole.Text = "Kasir";
+            var Session = SessionController.Instance;
+
+            labelUsername.Text = Session.Username;
+            labelRole.Text = Session.Username;
 
             if (currentControl != null && currentControl.Name == controlName)
             {
