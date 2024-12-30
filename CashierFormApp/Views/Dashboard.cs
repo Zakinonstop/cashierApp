@@ -19,6 +19,9 @@ namespace CashierFormApp.Views
 
         private void LoadUserControl(string controlName)
         {
+            labelUsername.Text = "zakinonstop";
+            labelRole.Text = "Kasir";
+
             if (currentControl != null && currentControl.Name == controlName)
             {
                 return; 
