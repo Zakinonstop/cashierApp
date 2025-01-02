@@ -12,6 +12,6 @@ namespace CashierFormApp.Model.Entity
         public string Code { get; set; }
         public string Name {  get; set; }
         public int Stock {  get; set; }
-        public float Price { get; set; }
+        public double Price { get; set; }
     }
 }

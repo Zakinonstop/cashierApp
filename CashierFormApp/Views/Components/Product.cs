@@ -81,25 +81,29 @@ namespace CashierFormApp.Views.Components
                 IsEditMode = false,  
             };
 
-            productHandler.ProductCode = "";
-            productHandler.ProductName = "";
-            productHandler.Stock = "";
-            productHandler.Price = "";
+            //productHandler.OnCreate += OnCreateEventHandler;
 
-            if (productHandler.ShowDialog() == DialogResult.OK)
-            {
-                ListViewItem newItem = new ListViewItem(new[]
-                {
-                    productHandler.ProductCode,
-                    productHandler.ProductName,
-                    productHandler.Stock,
-                    productHandler.Price
-                });
+            productHandler.ShowDialog();
 
-                listProduct.Items.Add(newItem);
+            //productHandler.ProductCode = "";
+            //productHandler.ProductName = "";
+            //productHandler.Stock = "";
+            //productHandler.Price = "";
 
-                MessageBox.Show("Product added successfully!", "Add Product", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //if (productHandler.ShowDialog() == DialogResult.OK)
+            //{
+            //    ListViewItem newItem = new ListViewItem(new[]
+            //    {
+            //        productHandler.ProductCode,
+            //        productHandler.ProductName,
+            //        productHandler.Stock,
+            //        productHandler.Price
+            //    });
+
+            //    listProduct.Items.Add(newItem);
+
+            //    MessageBox.Show("Product added successfully!", "Add Product", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
 
         private void btnEditProduct_Click(object sender, EventArgs e)
@@ -112,26 +116,26 @@ namespace CashierFormApp.Views.Components
 
             ListViewItem selectedItem = listProduct.SelectedItems[0];
 
-            ProductHandler productHandler = new ProductHandler
-            {
-                IsEditMode = true, 
-                ProductCode = selectedItem.SubItems[0].Text,
-                ProductName = selectedItem.SubItems[1].Text,
-                Stock = selectedItem.SubItems[2].Text,
-                Price = selectedItem.SubItems[3].Text
-            };
+            //ProductHandler productHandler = new ProductHandler
+            //{
+            //    IsEditMode = true, 
+            //    ProductCode = selectedItem.SubItems[0].Text,
+            //    ProductName = selectedItem.SubItems[1].Text,
+            //    Stock = selectedItem.SubItems[2].Text,
+            //    Price = selectedItem.SubItems[3].Text
+            //};
 
-            productHandler.Text = "Edit Product"; 
+            //productHandler.Text = "Edit Product"; 
 
-            if (productHandler.ShowDialog() == DialogResult.OK)
-            {
-                selectedItem.SubItems[0].Text = productHandler.ProductCode;
-                selectedItem.SubItems[1].Text = productHandler.ProductName;
-                selectedItem.SubItems[2].Text = productHandler.Stock;
-                selectedItem.SubItems[3].Text = productHandler.Price;
+            //if (productHandler.ShowDialog() == DialogResult.OK)
+            //{
+            //    selectedItem.SubItems[0].Text = productHandler.ProductCode;
+            //    selectedItem.SubItems[1].Text = productHandler.ProductName;
+            //    selectedItem.SubItems[2].Text = productHandler.Stock;
+            //    selectedItem.SubItems[3].Text = productHandler.Price;
 
-                MessageBox.Show("Product updated successfully!", "Edit Product", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //    MessageBox.Show("Product updated successfully!", "Edit Product", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
 
 

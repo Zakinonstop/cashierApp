@@ -20,11 +20,15 @@ namespace CashierFormApp.Model.Repository
         {
             int result = 0;
 
-            string sql = @"INSERT INTO product (name) values (@name)";
+            string sql = @"INSERT INTO `product` (`code`, `name`, `stock`, `price`) 
+                                          VALUES (@code, @name, @stock, @price)";
 
             using (MySqlCommand cmd = new MySqlCommand(sql, _conn))
             {
+                cmd.Parameters.AddWithValue("@code", product.Code);
                 cmd.Parameters.AddWithValue("@name", product.Name);
+                cmd.Parameters.AddWithValue("@stock", product.Stock);
+                cmd.Parameters.AddWithValue("@price", product.Price);
                 try
                 {
                     result = cmd.ExecuteNonQuery();
