@@ -7,39 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CashierFormApp.Controller;
+using CashierFormApp.Model.Entity;
 
 namespace CashierFormApp.Views.Components
 {
     public partial class ProductHandler : Form
     {
-        public bool IsEditMode { get; set; } = false; 
+        public bool IsEditMode { get; set; } = false;
+        private ProductEntity product;
+        private ProductController controller;
 
-        public string ProductCode
-        {
-            get => txtCode.Text;
-            set => txtCode.Text = value;
-        }
-
-        public string ProductName
-        {
-            get => txtProduct.Text;
-            set => txtProduct.Text = value;
-        }
-
-        public string Stock
-        {
-            get => txtStock.Text;
-            set => txtStock.Text = value;
-        }
-
-        public string Price
-        {
-            get => txtPrice.Text;
-            set => txtPrice.Text = value;
-        }
         public ProductHandler()
         {
             InitializeComponent();
+            //product = new ProductEntity();
+            controller = new ProductController();
         }
 
         private void ProductHandler_Load(object sender, EventArgs e)
@@ -77,8 +60,30 @@ namespace CashierFormApp.Views.Components
                 return;
             }
 
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            if (!IsEditMode)
+            {
+                product = new ProductEntity();
+
+                product.Code = txtCode.Text;
+                product.Name = txtProduct.Text;
+                product.Stock = Convert.ToInt32(txtStock.Text);
+                product.Price = Convert.ToDouble(txtPrice.Text);
+
+                int result = 0;
+
+                result = controller.Create(product);
+
+                if (result > 0)
+                {
+                    txtCode.Clear();
+                    txtPrice.Clear();
+                    txtProduct.Clear();
+                    txtStock.Clear();
+                }
+            }
+
+
+
         }
 
     }
