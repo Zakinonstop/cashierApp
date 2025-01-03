@@ -7,22 +7,48 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using CashierFormApp.Controller;
 using CashierFormApp.Model.Entity;
+using MySqlX.XDevAPI.Common;
 
 namespace CashierFormApp.Views.Components
 {
+    public delegate void CreateUpdateEventHandler(ProductEntity product);
     public partial class ProductHandler : Form
     {
-        public bool IsEditMode { get; set; } = false;
-        private ProductEntity product;
+        public event CreateUpdateEventHandler OnCreate;
+
+        public event CreateUpdateEventHandler OnUpdate;
+
         private ProductController controller;
+        public bool IsEditMode { get; set; } = false;
+
+        private ProductEntity product;
+
+        private int produckId;
+
 
         public ProductHandler()
         {
             InitializeComponent();
             //product = new ProductEntity();
             controller = new ProductController();
+        }
+
+        public ProductHandler(string title, ProductEntity obj, ProductController controller) : this()
+        {
+            this.Text = title;
+            this.controller = controller;
+            IsEditMode = true;
+            product = obj;
+
+            produckId = product.ProductId;
+            txtCode.Text = product.Code;
+            txtPrice.Text =  product.Price.ToString();
+            txtProduct.Text = product.Name;
+            txtStock.Text = product.Stock.ToString();
+
         }
 
         private void ProductHandler_Load(object sender, EventArgs e)
@@ -60,25 +86,34 @@ namespace CashierFormApp.Views.Components
                 return;
             }
 
-            if (!IsEditMode)
-            {
-                product = new ProductEntity();
+            if (!IsEditMode) product = new ProductEntity();
 
-                product.Code = txtCode.Text;
-                product.Name = txtProduct.Text;
-                product.Stock = Convert.ToInt32(txtStock.Text);
-                product.Price = Convert.ToDouble(txtPrice.Text);
+            product.ProductId = produckId;
+            product.Code = txtCode.Text;
+            product.Name = txtProduct.Text;
+            product.Stock = Convert.ToInt32(txtStock.Text);
+            product.Price = Convert.ToDouble(txtPrice.Text);
 
-                int result = 0;
+            int result = 0;
 
+            if (!IsEditMode){
                 result = controller.Create(product);
 
                 if (result > 0)
                 {
+                    OnCreate(product);
                     txtCode.Clear();
                     txtPrice.Clear();
                     txtProduct.Clear();
                     txtStock.Clear();
+                }
+            }else{
+                result = controller.Update(product);
+
+                if (result > 0)
+                {
+                    OnUpdate(product);
+                    this.Close();
                 }
             }
 

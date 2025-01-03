@@ -33,6 +33,10 @@
             this.txtProduct = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtStock = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtPrice = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtCode
@@ -51,14 +55,14 @@
             this.txtCode.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtCode.ForeColor = System.Drawing.Color.Black;
             this.txtCode.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCode.Location = new System.Drawing.Point(36, 34);
-            this.txtCode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtCode.Location = new System.Drawing.Point(40, 48);
+            this.txtCode.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtCode.Name = "txtCode";
             this.txtCode.PasswordChar = '\0';
             this.txtCode.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtCode.PlaceholderText = "Code";
             this.txtCode.SelectedText = "";
-            this.txtCode.Size = new System.Drawing.Size(267, 48);
+            this.txtCode.Size = new System.Drawing.Size(300, 60);
             this.txtCode.TabIndex = 7;
             // 
             // guna2ButtonLogin
@@ -71,9 +75,10 @@
             this.guna2ButtonLogin.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(35)))), ((int)(((byte)(60)))));
             this.guna2ButtonLogin.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2ButtonLogin.ForeColor = System.Drawing.Color.White;
-            this.guna2ButtonLogin.Location = new System.Drawing.Point(203, 257);
+            this.guna2ButtonLogin.Location = new System.Drawing.Point(228, 468);
+            this.guna2ButtonLogin.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2ButtonLogin.Name = "guna2ButtonLogin";
-            this.guna2ButtonLogin.Size = new System.Drawing.Size(100, 45);
+            this.guna2ButtonLogin.Size = new System.Drawing.Size(112, 56);
             this.guna2ButtonLogin.TabIndex = 5;
             this.guna2ButtonLogin.Text = "Save";
             this.guna2ButtonLogin.Click += new System.EventHandler(this.btnSave_Click);
@@ -94,14 +99,14 @@
             this.txtProduct.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtProduct.ForeColor = System.Drawing.Color.Black;
             this.txtProduct.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtProduct.Location = new System.Drawing.Point(36, 90);
-            this.txtProduct.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtProduct.Location = new System.Drawing.Point(40, 146);
+            this.txtProduct.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtProduct.Name = "txtProduct";
             this.txtProduct.PasswordChar = '\0';
             this.txtProduct.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtProduct.PlaceholderText = "Product";
             this.txtProduct.SelectedText = "";
-            this.txtProduct.Size = new System.Drawing.Size(267, 48);
+            this.txtProduct.Size = new System.Drawing.Size(300, 60);
             this.txtProduct.TabIndex = 7;
             // 
             // txtStock
@@ -120,14 +125,14 @@
             this.txtStock.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtStock.ForeColor = System.Drawing.Color.Black;
             this.txtStock.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtStock.Location = new System.Drawing.Point(36, 146);
-            this.txtStock.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtStock.Location = new System.Drawing.Point(40, 250);
+            this.txtStock.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtStock.Name = "txtStock";
             this.txtStock.PasswordChar = '\0';
             this.txtStock.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtStock.PlaceholderText = "Stock";
             this.txtStock.SelectedText = "";
-            this.txtStock.Size = new System.Drawing.Size(267, 48);
+            this.txtStock.Size = new System.Drawing.Size(300, 60);
             this.txtStock.TabIndex = 7;
             this.txtStock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStock_KeyPress);
             // 
@@ -147,31 +152,86 @@
             this.txtPrice.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtPrice.ForeColor = System.Drawing.Color.Black;
             this.txtPrice.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPrice.Location = new System.Drawing.Point(36, 202);
-            this.txtPrice.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtPrice.Location = new System.Drawing.Point(40, 358);
+            this.txtPrice.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.PasswordChar = '\0';
             this.txtPrice.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtPrice.PlaceholderText = "price";
             this.txtPrice.SelectedText = "";
-            this.txtPrice.Size = new System.Drawing.Size(267, 48);
+            this.txtPrice.Size = new System.Drawing.Size(300, 60);
             this.txtPrice.TabIndex = 7;
             this.txtPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrice_KeyPress);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(40, 24);
+            this.label6.Margin = new System.Windows.Forms.Padding(3, 20, 3, 20);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(49, 21);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Code";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(40, 125);
+            this.label1.Margin = new System.Windows.Forms.Padding(3, 20, 3, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 21);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Product";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(40, 222);
+            this.label2.Margin = new System.Windows.Forms.Padding(3, 20, 3, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 21);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Stock";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(40, 330);
+            this.label3.Margin = new System.Windows.Forms.Padding(3, 20, 3, 20);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 21);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Price";
+            // 
             // ProductHandler
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(348, 332);
+            this.ClientSize = new System.Drawing.Size(392, 571);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.txtStock);
             this.Controls.Add(this.txtProduct);
             this.Controls.Add(this.txtCode);
             this.Controls.Add(this.guna2ButtonLogin);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ProductHandler";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ProductHandler";
             this.Load += new System.EventHandler(this.ProductHandler_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -182,5 +242,9 @@
         private Guna.UI2.WinForms.Guna2TextBox txtProduct;
         private Guna.UI2.WinForms.Guna2TextBox txtStock;
         private Guna.UI2.WinForms.Guna2TextBox txtPrice;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

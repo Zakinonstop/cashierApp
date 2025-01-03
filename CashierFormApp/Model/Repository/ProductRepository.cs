@@ -40,16 +40,45 @@ namespace CashierFormApp.Model.Repository
             }
             return result;
         }
+        public int Update(ProductEntity product)
+        {
+            int result = 0;
+
+            string sql = @"UPDATE `product` 
+                            SET `code` = @code, 
+                                `name` = @name, 
+                                `stock` = @stock, 
+                                `price` = @price 
+                            WHERE `product`.`product_id` = @product_id";
+
+            using (MySqlCommand cmd = new MySqlCommand(sql, _conn))
+            {
+                cmd.Parameters.AddWithValue("@product_id", product.ProductId);
+                cmd.Parameters.AddWithValue("@code", product.Code);
+                cmd.Parameters.AddWithValue("@name", product.Name);
+                cmd.Parameters.AddWithValue("@stock", product.Stock);
+                cmd.Parameters.AddWithValue("@price", product.Price);
+                try
+                {
+                    result = cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.Print("Create error: {0}", ex.Message);
+                }
+            }
+            return result;
+        }
 
         public int Delete(ProductEntity product)
         {
             int result = 0;
 
-            string sql = @"DELETE FROM product WHERE `product`.`code` = @product_id";
+            string sql = @"DELETE FROM product WHERE `product`.`product_id` = @product_id";
 
             using (MySqlCommand cmd = new MySqlCommand(sql, _conn))
             {
-                cmd.Parameters.AddWithValue("@product_id", product.Code);
+                cmd.Parameters.AddWithValue("@product_id", product.ProductId);
                 try
                 {
                     result = cmd.ExecuteNonQuery();
@@ -77,7 +106,7 @@ namespace CashierFormApp.Model.Repository
                         while (dtr.Read())
                         {
                             ProductEntity product = new ProductEntity();
-                            //product.ProductId = Convert.ToInt32(dtr["productId"]);
+                            product.ProductId = Convert.ToInt32(dtr["product_id"]);
                             product.Name = dtr["name"].ToString();
                             product.Code = dtr["code"].ToString();
                             product.Stock = Convert.ToInt32(dtr["stock"]);
