@@ -34,10 +34,10 @@ namespace CashierFormApp.Views.Components
             listProduct.HeaderStyle = ColumnHeaderStyle.None;
 
             listProduct.Columns.Add("No", 30, HorizontalAlignment.Left);
-            listProduct.Columns.Add("Code", 100, HorizontalAlignment.Left);
+            listProduct.Columns.Add("Code", 160, HorizontalAlignment.Left);
             listProduct.Columns.Add("Product", 200, HorizontalAlignment.Left);
-            listProduct.Columns.Add("Stock", 120, HorizontalAlignment.Right);
-            listProduct.Columns.Add("Price", 120, HorizontalAlignment.Right);
+            listProduct.Columns.Add("Stock", 160, HorizontalAlignment.Right);
+            listProduct.Columns.Add("Price", 160, HorizontalAlignment.Right);
 
             listProduct.Resize += (s, e) => AdjustColumnWidths();
         }
@@ -68,9 +68,9 @@ namespace CashierFormApp.Views.Components
             if (listProduct.Columns.Count > 1)
             {
                 int totalWidth = listProduct.ClientSize.Width - 24;
-                int fixedWidth = 160 + 160 + 160;
+                int fixedWidth = 30 + 160 + 160 + 160;
 
-                listProduct.Columns[1].Width = totalWidth - fixedWidth;
+                listProduct.Columns[2].Width = totalWidth - fixedWidth;
             }
         }
 
