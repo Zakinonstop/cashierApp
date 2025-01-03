@@ -94,13 +94,6 @@ namespace CashierFormApp.Controller
         {
             int result = 0;
 
-            DialogResult dialogResult = MessageBox.Show("Anda yakin akan menghapus data?", "Peringatan", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-
-            if (dialogResult == DialogResult.No)
-            {
-                return 0;
-            }
-
             using (DbContext context = new DbContext())
             {
                 _repository = new ProductRepository(context);
@@ -109,12 +102,14 @@ namespace CashierFormApp.Controller
 
             if (result > 0)
             {
-                MessageBox.Show("Data berhasil dihapus !", "Informasi",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Product deleted successfully!", "Delete Product", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
-                MessageBox.Show("Data gagal dihapus !!!", "Peringatan",
-                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            {
+                MessageBox.Show("Product deleted failed!", "Confirm Delete",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
 
             return result;
         }

@@ -51,7 +51,7 @@ namespace CashierFormApp.Views.Components
             // ekstrak objek mhs dari collection
             foreach (var product in listOfProduct)
             {
-                var noUrut = listOfProduct.IndexOf(product);
+                var noUrut = listOfProduct.IndexOf(product) + 1;
                 var item = new ListViewItem(noUrut.ToString());
                 item.SubItems.Add(product.Code);
                 item.SubItems.Add(product.Name);
@@ -81,7 +81,7 @@ namespace CashierFormApp.Views.Components
                 IsEditMode = false,  
             };
 
-            //productHandler.OnCreate += OnCreateEventHandler;
+            productHandler.OnCreate += OnCreateEventHandler;
 
             productHandler.ShowDialog();
         }
@@ -129,12 +129,13 @@ namespace CashierFormApp.Views.Components
 
                 var hasil = controller.Delete(product);
 
-                //if (hasil > 0) LoadDataProduct();
-
-                listProduct.Items.Remove(selectedItem);
-
-                MessageBox.Show("Product deleted successfully!", "Delete Product", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (hasil > 0) LoadDataProduct();
             }
+        }
+
+        public void OnCreateEventHandler(ProductEntity product)
+        {
+            LoadDataProduct();
         }
 
         public void OnUpdateEventHandler(ProductEntity product)

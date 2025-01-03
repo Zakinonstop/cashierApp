@@ -26,6 +26,8 @@ namespace CashierFormApp.Views.Components
 
         private ProductEntity product;
 
+        private int produckId;
+
 
         public ProductHandler()
         {
@@ -41,6 +43,7 @@ namespace CashierFormApp.Views.Components
             IsEditMode = true;
             product = obj;
 
+            produckId = product.ProductId;
             txtCode.Text = product.Code;
             txtPrice.Text =  product.Price.ToString();
             txtProduct.Text = product.Name;
@@ -85,7 +88,7 @@ namespace CashierFormApp.Views.Components
 
             if (!IsEditMode) product = new ProductEntity();
 
-            product.ProductId = 5;
+            product.ProductId = produckId;
             product.Code = txtCode.Text;
             product.Name = txtProduct.Text;
             product.Stock = Convert.ToInt32(txtStock.Text);
@@ -98,6 +101,7 @@ namespace CashierFormApp.Views.Components
 
                 if (result > 0)
                 {
+                    OnCreate(product);
                     txtCode.Clear();
                     txtPrice.Clear();
                     txtProduct.Clear();
