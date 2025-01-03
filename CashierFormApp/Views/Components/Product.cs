@@ -84,26 +84,6 @@ namespace CashierFormApp.Views.Components
             //productHandler.OnCreate += OnCreateEventHandler;
 
             productHandler.ShowDialog();
-
-            //productHandler.ProductCode = "";
-            //productHandler.ProductName = "";
-            //productHandler.Stock = "";
-            //productHandler.Price = "";
-
-            //if (productHandler.ShowDialog() == DialogResult.OK)
-            //{
-            //    ListViewItem newItem = new ListViewItem(new[]
-            //    {
-            //        productHandler.ProductCode,
-            //        productHandler.ProductName,
-            //        productHandler.Stock,
-            //        productHandler.Price
-            //    });
-
-            //    listProduct.Items.Add(newItem);
-
-            //    MessageBox.Show("Product added successfully!", "Add Product", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
         }
 
         private void btnEditProduct_Click(object sender, EventArgs e)
@@ -112,30 +92,16 @@ namespace CashierFormApp.Views.Components
             {
                 MessageBox.Show("Please select a product to edit.", "Edit Product", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
+            }else
+            {
+                ProductEntity product = listOfProduct[listProduct.SelectedIndices[0]];
+
+                ProductHandler productHandler = new ProductHandler("Edit Product", product, controller);
+
+                productHandler.OnUpdate += OnUpdateEventHandler;
+
+                productHandler.ShowDialog();
             }
-
-            ListViewItem selectedItem = listProduct.SelectedItems[0];
-
-            //ProductHandler productHandler = new ProductHandler
-            //{
-            //    IsEditMode = true, 
-            //    ProductCode = selectedItem.SubItems[0].Text,
-            //    ProductName = selectedItem.SubItems[1].Text,
-            //    Stock = selectedItem.SubItems[2].Text,
-            //    Price = selectedItem.SubItems[3].Text
-            //};
-
-            //productHandler.Text = "Edit Product"; 
-
-            //if (productHandler.ShowDialog() == DialogResult.OK)
-            //{
-            //    selectedItem.SubItems[0].Text = productHandler.ProductCode;
-            //    selectedItem.SubItems[1].Text = productHandler.ProductName;
-            //    selectedItem.SubItems[2].Text = productHandler.Stock;
-            //    selectedItem.SubItems[3].Text = productHandler.Price;
-
-            //    MessageBox.Show("Product updated successfully!", "Edit Product", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
         }
 
 
@@ -169,6 +135,20 @@ namespace CashierFormApp.Views.Components
 
                 MessageBox.Show("Product deleted successfully!", "Delete Product", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        public void OnUpdateEventHandler(ProductEntity product)
+        {
+            int index = listProduct.SelectedIndices[0];
+
+            ListViewItem itemRow = listProduct.Items[index];
+            itemRow.SubItems[1].Text = product.Code;
+
+            itemRow.SubItems[2].Text = product.Name;
+
+            itemRow.SubItems[3].Text = product.Stock.ToString();
+
+            itemRow.SubItems[4].Text = product.Price.ToString();
         }
 
     }

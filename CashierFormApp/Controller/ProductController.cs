@@ -43,6 +43,35 @@ namespace CashierFormApp.Controller
             return result;
         }
 
+        public int Update(ProductEntity product)
+        {
+            int result = 0;
+
+            if (string.IsNullOrEmpty(product.Name))
+            {
+                MessageBox.Show("Nama harus diisi !!!", "Peringatan",
+                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return 0;
+            }
+
+            using (DbContext context = new DbContext())
+            {
+                _repository = new ProductRepository(context);
+                result = _repository.Update(product);
+            }
+
+            if (result > 0)
+            {
+                MessageBox.Show("Data berhasil diperbarui !", "Informasi",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+                MessageBox.Show("Data gagal diperbarui !!!", "Peringatan",
+                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            return result;
+        }
+
         public List<ProductEntity> ReadAll()
         {
             // membuat objek collection
