@@ -44,21 +44,19 @@ namespace CashierFormApp.Views.Components
 
         private void LoadDataProduct()
         {
-            // kosongkan listview
             listProduct.Items.Clear();
-            // panggil method ReadAll dan tampung datanya ke dalam collection
-            listOfProduct = controller.ReadAll();
-            // ekstrak objek mhs dari collection
-            foreach (var product in listOfProduct)
-            {
-                var noUrut = listOfProduct.IndexOf(product) + 1;
-                var item = new ListViewItem(noUrut.ToString());
-                item.SubItems.Add(product.Code);
-                item.SubItems.Add(product.Name);
-                item.SubItems.Add(product.Stock.ToString());
-                item.SubItems.Add(product.Price.ToString());
 
-                // tampilkan data mhs ke listview
+            listOfProduct = controller.ReadAll();
+
+            foreach (var value in listOfProduct)
+            {
+                var noUrut = listOfProduct.IndexOf(value) + 1;
+                var item = new ListViewItem(noUrut.ToString());
+                item.SubItems.Add(value.Code);
+                item.SubItems.Add(value.Name);
+                item.SubItems.Add(value.Stock.ToString());
+                item.SubItems.Add(value.Price.ToString());
+
                 listProduct.Items.Add(item);
             }
         }
@@ -76,10 +74,7 @@ namespace CashierFormApp.Views.Components
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
-            ProductHandler productHandler = new ProductHandler
-            {
-                IsEditMode = false,  
-            };
+            ProductHandler productHandler = new ProductHandler("Add Data", controller);
 
             productHandler.OnCreate += OnCreateEventHandler;
 
@@ -90,13 +85,13 @@ namespace CashierFormApp.Views.Components
         {
             if (listProduct.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Please select a product to edit.", "Edit Product", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a product to edit.", "Edit Data", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }else
             {
                 ProductEntity product = listOfProduct[listProduct.SelectedIndices[0]];
 
-                ProductHandler productHandler = new ProductHandler("Edit Product", product, controller);
+                ProductHandler productHandler = new ProductHandler("Edit Data", product, controller);
 
                 productHandler.OnUpdate += OnUpdateEventHandler;
 
@@ -109,7 +104,7 @@ namespace CashierFormApp.Views.Components
         {
             if (listProduct.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Please select a product to delete.", "Delete Product", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a product to delete.", "Delete Data", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -138,19 +133,44 @@ namespace CashierFormApp.Views.Components
             LoadDataProduct();
         }
 
-        public void OnUpdateEventHandler(ProductEntity product)
+        public void OnUpdateEventHandler(ProductEntity value)
         {
             int index = listProduct.SelectedIndices[0];
 
             ListViewItem itemRow = listProduct.Items[index];
-            itemRow.SubItems[1].Text = product.Code;
 
-            itemRow.SubItems[2].Text = product.Name;
+            itemRow.SubItems[1].Text = value.Code;
 
-            itemRow.SubItems[3].Text = product.Stock.ToString();
+            itemRow.SubItems[2].Text = value.Name;
 
-            itemRow.SubItems[4].Text = product.Price.ToString();
+            itemRow.SubItems[3].Text = value.Stock.ToString();
+
+            itemRow.SubItems[4].Text = value.Price.ToString();
         }
 
+
+        private void Search()
+        {
+            listProduct.Items.Clear();
+
+            listOfProduct = controller.ReadByAnything(txtCari.Text);
+
+            foreach (var value in listOfProduct)
+            {
+                var noUrut = listProduct.Items.Count + 1;
+                var item = new ListViewItem(noUrut.ToString());
+                item.SubItems.Add(value.Code);
+                item.SubItems.Add(value.Name);
+                item.SubItems.Add(value.Stock.ToString());
+                item.SubItems.Add(value.Price.ToString());
+
+                listProduct.Items.Add(item);
+            }
+        }
+
+        private void txtCari_TextChanged(object sender, EventArgs e)
+        {
+            Search();
+        }
     }
 }

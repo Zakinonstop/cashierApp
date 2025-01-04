@@ -32,8 +32,13 @@ namespace CashierFormApp.Views.Components
         public ProductHandler()
         {
             InitializeComponent();
-            //product = new ProductEntity();
             controller = new ProductController();
+        }
+
+        public ProductHandler(string title, ProductController controller) : this()
+        {
+            this.Text = title;
+            this.controller = controller;
         }
 
         public ProductHandler(string title, ProductEntity obj, ProductController controller) : this()

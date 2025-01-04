@@ -42,7 +42,33 @@ namespace CashierFormApp.Controller
 
             return result;
         }
+        public List<ProductEntity> ReadAll()
+        {
+            List<ProductEntity> list = new List<ProductEntity>();
 
+            using (DbContext context = new DbContext())
+            {
+                _repository = new ProductRepository(context);
+
+                list = _repository.ReadAll();
+            }
+
+            return list;
+        }
+
+        public List<ProductEntity> ReadByAnything(string keyword)
+        {
+            List<ProductEntity> list = new List<ProductEntity>();
+
+            using (DbContext context = new DbContext())
+            {
+                _repository = new ProductRepository(context);
+
+                list = _repository.ReadByAnything(keyword);
+            }
+
+            return list;
+        }
         public int Update(ProductEntity product)
         {
             int result = 0;
@@ -71,25 +97,6 @@ namespace CashierFormApp.Controller
 
             return result;
         }
-
-        public List<ProductEntity> ReadAll()
-        {
-            // membuat objek collection
-            List<ProductEntity> list = new List<ProductEntity>();
-
-            // membuat objek context menggunakan blok using
-            using (DbContext context = new DbContext())
-            {
-                // membuat objek dari class repository
-                _repository = new ProductRepository(context);
-
-                //panggil method ReadAll yang ada di dalam class repository
-                list = _repository.ReadAll();
-            }
-
-            return list;
-        }
-
         public int Delete(ProductEntity product)
         {
             int result = 0;

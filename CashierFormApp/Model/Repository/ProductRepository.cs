@@ -1,5 +1,6 @@
 ﻿using CashierFormApp.Model.Context;
 using CashierFormApp.Model.Entity;
+using CashierFormApp.Views.Components;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -69,28 +70,6 @@ namespace CashierFormApp.Model.Repository
             }
             return result;
         }
-
-        public int Delete(ProductEntity product)
-        {
-            int result = 0;
-
-            string sql = @"DELETE FROM product WHERE `product`.`product_id` = @product_id";
-
-            using (MySqlCommand cmd = new MySqlCommand(sql, _conn))
-            {
-                cmd.Parameters.AddWithValue("@product_id", product.ProductId);
-                try
-                {
-                    result = cmd.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.Print("Delete error: {0}", ex.Message);
-                }
-            }
-            return result;
-        }
-
         public List<ProductEntity> ReadAll()
         {
             List<ProductEntity> list = new List<ProductEntity>();
@@ -124,6 +103,67 @@ namespace CashierFormApp.Model.Repository
             }
 
             return list;
+        }
+
+        public List<ProductEntity> ReadByAnything(string keyword)
+        {
+            List<ProductEntity> list = new List<ProductEntity>();
+
+            try
+            {
+                string sql = @"SELECT * FROM `product` 
+                                WHERE code LIKE @keyword OR
+                                name LIKE @keyword OR
+                                stock LIKE @keyword OR
+                                price LIKE @keyword  
+                               ORDER BY `product`.`name` ASC";
+
+                using (MySqlCommand cmd = new MySqlCommand(sql, _conn))
+                {
+                    cmd.Parameters.AddWithValue("@keyword", string.Format("%{0}%", keyword));
+                    using (MySqlDataReader dtr = cmd.ExecuteReader())
+                    {
+                        while (dtr.Read())
+                        {
+                            ProductEntity product = new ProductEntity();
+                            product.ProductId = Convert.ToInt32(dtr["product_id"]);
+                            product.Name = dtr["name"].ToString();
+                            product.Code = dtr["code"].ToString();
+                            product.Stock = Convert.ToInt32(dtr["stock"]);
+                            product.Price = Convert.ToSingle(dtr["price"]);
+
+                            list.Add(product);
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print("ReadAll error: {0}", ex.Message);
+            }
+
+            return list;
+        }
+        public int Delete(ProductEntity product)
+        {
+            int result = 0;
+
+            string sql = @"DELETE FROM product WHERE `product`.`product_id` = @product_id";
+
+            using (MySqlCommand cmd = new MySqlCommand(sql, _conn))
+            {
+                cmd.Parameters.AddWithValue("@product_id", product.ProductId);
+                try
+                {
+                    result = cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.Print("Delete error: {0}", ex.Message);
+                }
+            }
+            return result;
         }
     }
 }
