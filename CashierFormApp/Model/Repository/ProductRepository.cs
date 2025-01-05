@@ -145,6 +145,43 @@ namespace CashierFormApp.Model.Repository
 
             return list;
         }
+
+        public List<ProductEntity> ReadByCode(string keyword)
+        {
+            List<ProductEntity> list = new List<ProductEntity>();
+
+            try
+            {
+                string sql = @"SELECT * FROM `product` 
+                                WHERE code = @keyword";
+
+                using (MySqlCommand cmd = new MySqlCommand(sql, _conn))
+                {
+                    cmd.Parameters.AddWithValue("@keyword", string.Format("{0}", keyword));
+                    using (MySqlDataReader dtr = cmd.ExecuteReader())
+                    {
+                        while (dtr.Read())
+                        {
+                            ProductEntity product = new ProductEntity();
+                            product.ProductId = Convert.ToInt32(dtr["product_id"]);
+                            product.Name = dtr["name"].ToString();
+                            product.Code = dtr["code"].ToString();
+                            product.Stock = Convert.ToInt32(dtr["stock"]);
+                            product.Price = Convert.ToSingle(dtr["price"]);
+
+                            list.Add(product);
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print("ReadAll error: {0}", ex.Message);
+            }
+
+            return list;
+        }
         public int Delete(ProductEntity product)
         {
             int result = 0;

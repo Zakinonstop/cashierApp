@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace CashierFormApp.Model.Entity
 {
-    public class ProductEntity
+    public class TransactionDetailEntity
     {
+        public int Urut { get; set; }
+        public int TransactionDetailId { get; set; }
         public int ProductId { get; set; }
-        public string Code { get; set; }
-        public string Name {  get; set; }
-        public int Stock {  get; set; }
-        public float Price { get; set; }
+        public int qty {  get; set; }
+        public double price {  get; set; }
     }
 }

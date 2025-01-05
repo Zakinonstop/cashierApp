@@ -1,5 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
+using CashierFormApp.Controller;
+using CashierFormApp.Model.Entity;
+using Guna.UI2.AnimatorNS;
 
 namespace CashierFormApp.Views
 {
@@ -21,10 +26,20 @@ namespace CashierFormApp.Views
 
     public partial class FormTransaction : Form
     {
+        private TransactionController controller;
+        private ProductController productController;
+        private TransactionDetailController transactionDetailController;
+        private List<TransactionEntity> listOfTransaction = new List<TransactionEntity>();
+        private List<ProductEntity> listOfProduct = new List<ProductEntity>();
+        private int transactionDetailId;
         public FormTransaction()
         {
             InitializeComponent();
             InitializeListView();
+            controller = new TransactionController();
+            productController = new ProductController();
+            transactionDetailController = new TransactionDetailController();
+            GetNewTransactionDetailId();
         }
 
         private void InitializeListView()
@@ -172,15 +187,27 @@ namespace CashierFormApp.Views
 
                 if (!string.IsNullOrEmpty(productCode))
                 {
-                    string productName = "Sample Product";
-                    int productPrice = 15000;
 
-                    var item = new ListViewItem(productCode);
-                    item.SubItems.Add(productName);
-                    item.SubItems.Add("Rp." + productPrice.ToString("N0"));
-                    listTransaction.Items.Add(item);
+                    listOfProduct = productController.ReadByCode(productCode);
 
-                    UpdateSumTransaction(new ProductTransaction(productCode, productName, productPrice));
+                    if (listOfProduct.Any())
+                    {
+                        foreach (var value in listOfProduct)
+                        {
+                            var item = new ListViewItem(value.Code);
+                            item.SubItems.Add(value.Name);
+                            item.SubItems.Add("Rp. " + value.Price.ToString("N0"));
+                            listTransaction.Items.Add(item);
+
+                            int qty = 1;
+                            transactionDetailController.Create(transactionDetailId, value.ProductId, qty, value.Price);
+                            //UpdateSumTransaction(new ProductTransaction(value.Code, value.Name, Convert.ToInt32(value.Price)));
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Code Product Not Found.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
 
                     InputCode.Clear();
                 }
@@ -208,8 +235,6 @@ namespace CashierFormApp.Views
                 MessageBox.Show("Please select an item to delete.", "Delete Item", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
-        
 
         private void BtnPay_Click(object sender, EventArgs e)
         {
@@ -251,6 +276,24 @@ namespace CashierFormApp.Views
             {
                 MessageBox.Show("Invalid payment amount. Please enter a valid number.", "Payment Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private int GetNewTransactionDetailId()
+        {
+            int result = 0;
+
+            listOfTransaction = controller.GetMaxTransactionDetailId();
+
+            if (listOfTransaction != null)
+            {
+                foreach (var value in listOfTransaction)
+                {
+                   result = value.TransactionDetailId;
+                }
+            }
+
+            transactionDetailId = result + 1;
+            return result;
         }
     }
 }

@@ -147,8 +147,6 @@ namespace CashierFormApp.Views.Components
 
             itemRow.SubItems[4].Text = value.Price.ToString();
         }
-
-
         private void Search()
         {
             listProduct.Items.Clear();

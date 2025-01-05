@@ -11,24 +11,25 @@ using System.Web.Compilation;
 
 namespace CashierFormApp.Controller
 {
-    public class ProductController
+    public class TransactionController
     {
-        private ProductRepository _repository;
-        public int Create(ProductEntity product)
+        private TransactionRepository _repository;
+
+        public int Create(TransactionEntity transaction)
         {
             int result = 0;
 
-            if (string.IsNullOrEmpty(product.Name))
-            {
-                MessageBox.Show("Nama harus diisi !!!", "Peringatan",
-                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return 0;
-            }
+            //if (string.IsNullOrEmpty(transaction.Name))
+            //{
+            //    MessageBox.Show("Nama harus diisi !!!", "Peringatan",
+            //    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //    return 0;
+            //}
 
             using (DbContext context = new DbContext())
             {
-                _repository = new ProductRepository(context);
-                result = _repository.Create(product);
+                _repository = new TransactionRepository(context);
+                result = _repository.Create(transaction);
             }
 
             if (result > 0)
@@ -42,13 +43,13 @@ namespace CashierFormApp.Controller
 
             return result;
         }
-        public List<ProductEntity> ReadAll()
+        public List<TransactionEntity> ReadAll()
         {
-            List<ProductEntity> list = new List<ProductEntity>();
+            List<TransactionEntity> list = new List<TransactionEntity>();
 
             using (DbContext context = new DbContext())
             {
-                _repository = new ProductRepository(context);
+                _repository = new TransactionRepository(context);
 
                 list = _repository.ReadAll();
             }
@@ -56,13 +57,13 @@ namespace CashierFormApp.Controller
             return list;
         }
 
-        public List<ProductEntity> ReadByAnything(string keyword)
+        public List<TransactionEntity> ReadByAnything(string keyword)
         {
-            List<ProductEntity> list = new List<ProductEntity>();
+            List<TransactionEntity> list = new List<TransactionEntity>();
 
             using (DbContext context = new DbContext())
             {
-                _repository = new ProductRepository(context);
+                _repository = new TransactionRepository(context);
 
                 list = _repository.ReadByAnything(keyword);
             }
@@ -70,34 +71,34 @@ namespace CashierFormApp.Controller
             return list;
         }
 
-        public List<ProductEntity> ReadByCode(string keyword)
+        public List<TransactionEntity> GetMaxTransactionDetailId()
         {
-            List<ProductEntity> list = new List<ProductEntity>();
+            List<TransactionEntity> list = new List<TransactionEntity>();
 
             using (DbContext context = new DbContext())
             {
-                _repository = new ProductRepository(context);
+                _repository = new TransactionRepository(context);
 
-                list = _repository.ReadByCode(keyword);
+                list = _repository.GetMaxTransactionDetailId();
             }
 
             return list;
         }
-        public int Update(ProductEntity product)
+        public int Update(TransactionEntity transaction)
         {
             int result = 0;
 
-            if (string.IsNullOrEmpty(product.Name))
-            {
-                MessageBox.Show("Nama harus diisi !!!", "Peringatan",
-                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return 0;
-            }
+            //if (string.IsNullOrEmpty(transaction.Name))
+            //{
+            //    MessageBox.Show("Nama harus diisi !!!", "Peringatan",
+            //    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //    return 0;
+            //}
 
             using (DbContext context = new DbContext())
             {
-                _repository = new ProductRepository(context);
-                result = _repository.Update(product);
+                _repository = new TransactionRepository(context);
+                result = _repository.Update(transaction);
             }
 
             if (result > 0)
@@ -111,24 +112,24 @@ namespace CashierFormApp.Controller
 
             return result;
         }
-        public int Delete(ProductEntity product)
+        public int Delete(TransactionEntity transaction)
         {
             int result = 0;
 
             using (DbContext context = new DbContext())
             {
-                _repository = new ProductRepository(context);
-                result = _repository.Delete(product);
+                _repository = new TransactionRepository(context);
+                result = _repository.Delete(transaction);
             }
 
             if (result > 0)
             {
-                MessageBox.Show("Product deleted successfully!", "Delete Product", 
+                MessageBox.Show("transaction deleted successfully!", "Delete transaction",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("Product deleted failed!", "Confirm Delete",
+                MessageBox.Show("transaction deleted failed!", "Confirm Delete",
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
 
