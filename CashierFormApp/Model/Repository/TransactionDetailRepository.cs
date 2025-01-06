@@ -226,11 +226,11 @@ namespace CashierFormApp.Model.Repository
                 string sql = @"SELECT product.name, product.code, transaction_detail.* 
                                 FROM `transaction_detail`
                                 JOIN product ON product.product_id = transaction_detail.product_id
-                                WHERE transaction_detail_id = 1";
+                                WHERE transaction_detail_id = @transactionDetailId";
 
                 using (MySqlCommand cmd = new MySqlCommand(sql, _conn))
                 {
-                    cmd.Parameters.AddWithValue("@transaction_detail_id", string.Format("{0}", transactionDetailId));
+                    cmd.Parameters.AddWithValue("@transactionDetailId", string.Format("{0}", transactionDetailId));
                     using (MySqlDataReader dtr = cmd.ExecuteReader())
                     {
                         while (dtr.Read())

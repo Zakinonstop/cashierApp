@@ -11,6 +11,6 @@ namespace CashierFormApp.Model.Entity
         public int TransactionId { get; set; }
         public int UserId { get; set; }
         public int TransactionDetailId {  get; set; }
-        public double TotalAmount {  get; set; }
+        public float TotalAmount {  get; set; }
     }
 }

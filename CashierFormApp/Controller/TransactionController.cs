@@ -19,27 +19,20 @@ namespace CashierFormApp.Controller
         {
             int result = 0;
 
-            //if (string.IsNullOrEmpty(transaction.Name))
-            //{
-            //    MessageBox.Show("Nama harus diisi !!!", "Peringatan",
-            //    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //    return 0;
-            //}
-
             using (DbContext context = new DbContext())
             {
                 _repository = new TransactionRepository(context);
                 result = _repository.Create(transaction);
             }
 
-            if (result > 0)
-            {
-                MessageBox.Show("Data berhasil disimpan !", "Informasi",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-                MessageBox.Show("Data gagal disimpan !!!", "Peringatan",
-                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //if (result > 0)
+            //{
+            //    //MessageBox.Show("Data berhasil disimpan !", "Informasi",
+            //    //MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
+            //else
+            //    MessageBox.Show("Data gagal disimpan !!!", "Peringatan",
+            //    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
             return result;
         }

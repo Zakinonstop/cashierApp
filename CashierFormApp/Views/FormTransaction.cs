@@ -4,8 +4,12 @@ using System.Linq;
 using System.Windows.Forms;
 using CashierFormApp.Controller;
 using CashierFormApp.Model.Entity;
+using CashierFormApp.Views.Components;
 using Google.Protobuf.WellKnownTypes;
 using Guna.UI2.AnimatorNS;
+using MySqlX.XDevAPI;
+using Org.BouncyCastle.Bcpg;
+using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 namespace CashierFormApp.Views
 {
@@ -93,8 +97,6 @@ namespace CashierFormApp.Views
 
         private void UpdateSumTransaction(int transactionDetailId)
         {
-            //MessageBox.Show("Code Product Found.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //getData 
             listOfSumTransaction = transactionDetailController.ReadByTransactionDetailId(transactionDetailId);
 
             if(listOfSumTransaction.Any())
@@ -109,7 +111,7 @@ namespace CashierFormApp.Views
                     item.SubItems.Add("Rp. " + value.Price.ToString("N0"));
                     listSumTransaction.Items.Add(item);
 
-                    //CalculateTotalPrice();
+                    CalculateTotalPrice();
                 }
             }
             else
@@ -243,17 +245,16 @@ namespace CashierFormApp.Views
 
         private void LoadDetailTransaksi()
         {
+
             listOfDetailTransaction = transactionDetailController.ReadDetailByTransactionDetailId(transactionDetailId);
 
             if (listOfDetailTransaction.Any())
             {
-                //MessageBox.Show("ii", "ind", MessageBoxButtons.OK);
                 listTransaction.Items.Clear();
                 foreach (var valueDetail in listOfDetailTransaction)
                 {
                     var item = new ListViewItem(valueDetail.ProductCode);
                     item.SubItems.Add(valueDetail.ProductName);
-                    item.SubItems.Add(valueDetail.Qty.ToString());
                     item.SubItems.Add("Rp. " + valueDetail.Price.ToString("N0"));
                     listTransaction.Items.Add(item);
 
@@ -262,56 +263,21 @@ namespace CashierFormApp.Views
             }
         }
 
-        //private void BtnDelete_Click(object sender, EventArgs e)
-        //{
-        //    if (listTransaction.SelectedItems.Count > 0)
-        //    {
-        //        //var selectedItem = listTransaction.SelectedItems[0];
-
-        //        //string productCode = selectedItem.Text;
-        //        //string productPriceText = selectedItem.SubItems[2].Text.Replace("Rp.", "").Replace(",", "").Trim();
-        //        //decimal productPrice = decimal.Parse(productPriceText);
-
-        //        //listTransaction.Items.Remove(selectedItem);
-
-        //        //UpdateSumTransactionAfterDeletion(productCode, productPrice);
-
-        //        //CalculateTotalPrice();
-        //        TransactionDetailEntity transactionDetail = listOfDetailTransaction[listTransaction.SelectedIndices[0]];
-
-        //        var hasil = transactionDetailController.Delete(transactionDetail);
-
-        //        if (hasil > 0) UpdateSumTransaction(transactionDetailId);
-
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Please select an item to delete.", "Delete Item", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //    }
-        //}
-
         private void BtnDelete_Click(object sender, EventArgs e)
         {
             if (listTransaction.SelectedItems.Count > 0)
             {
                 int selectedIndex = listTransaction.SelectedIndices[0];
 
-                MessageBox.Show(selectedIndex.ToString(), "Delete Item", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                
-                if (selectedIndex >= 0)
+                if (selectedIndex >= 0 && selectedIndex < listOfDetailTransaction.Count)
                 {
-                    // Get the selected transaction detail
                     TransactionDetailEntity transactionDetail = listOfDetailTransaction[selectedIndex];
 
-                    MessageBox.Show("cek1.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    // Delete the transaction detail
                     var result = transactionDetailController.Delete(transactionDetail);
 
 
                     if (result > 0)
                     {
-                        MessageBox.Show("cek.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                         // Reload transaction details and update the summary
                         LoadDetailTransaksi();
                         UpdateSumTransaction(transactionDetailId);
@@ -356,16 +322,33 @@ namespace CashierFormApp.Views
                     MessageBox.Show("Payment amount is less than the total price.", "Payment Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
                 decimal change = paymentAmount - totalPrice;
 
-                MessageBox.Show($"Payment successful!\nChange: Rp. {change.ToString("N0")}", "Payment", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                TransactionEntity transaction = new TransactionEntity();
 
-                listTransaction.Items.Clear();
-                listSumTransaction.Items.Clear();
-                InputPay.Clear();
-                labelTax.Text = "Rp. 0";
-                labelTotal.Text = "Rp. 0";
+                var session = SessionController.Instance;
+                transaction.UserId = session.UserId;
+                transaction.TransactionDetailId = transactionDetailId;
+                transaction.TotalAmount = Convert.ToSingle(totalPrice);
+
+                int result = controller.Create(transaction);
+
+                if (result > 0)
+                {
+                    MessageBox.Show($"Payment successful!\nChange: Rp. {change.ToString("N0")}", "Payment", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    GetNewTransactionDetailId();
+                    LoadDetailTransaksi();
+                    listTransaction.Items.Clear();
+                    listSumTransaction.Items.Clear();
+                    InputPay.Clear();
+                    labelTax.Text = "Rp. 0";
+                    labelTotal.Text = "Rp. 0";
+                }else
+                {
+                    MessageBox.Show($"Payment Failed!", "Payment", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
             }
             catch (FormatException)
             {
@@ -388,6 +371,7 @@ namespace CashierFormApp.Views
             }
 
             transactionDetailId = result + 1;
+
             return result;
         }
     }
