@@ -65,6 +65,34 @@ namespace CashierFormApp.Controller
             return list;
         }
 
+        public List<TransactionDetailEntity> ReadByTransactionDetailId(int transactionDetailId)
+        {
+            List<TransactionDetailEntity> list = new List<TransactionDetailEntity>();
+
+            using (DbContext context = new DbContext())
+            {
+                _repository = new TransactionDetailRepository(context);
+
+                list = _repository.ReadByTransactionDetailId(transactionDetailId);
+            }
+
+            return list;
+        }
+
+        public List<TransactionDetailEntity> ReadDetailByTransactionDetailId(int transactionDetailId)
+        {
+            List<TransactionDetailEntity> list = new List<TransactionDetailEntity>();
+
+            using (DbContext context = new DbContext())
+            {
+                _repository = new TransactionDetailRepository(context);
+
+                list = _repository.ReadDetailByTransactionDetailId(transactionDetailId);
+            }
+
+            return list;
+        }
+
         //public List<TransactionDetailEntity> GetMaxtransactionDetailDetailId()
         //{
         //    List<TransactionDetailEntity> list = new List<TransactionDetailEntity>();

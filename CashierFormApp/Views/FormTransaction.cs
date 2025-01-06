@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using CashierFormApp.Controller;
 using CashierFormApp.Model.Entity;
+using Google.Protobuf.WellKnownTypes;
 using Guna.UI2.AnimatorNS;
 
 namespace CashierFormApp.Views
@@ -31,6 +32,8 @@ namespace CashierFormApp.Views
         private TransactionDetailController transactionDetailController;
         private List<TransactionEntity> listOfTransaction = new List<TransactionEntity>();
         private List<ProductEntity> listOfProduct = new List<ProductEntity>();
+        private List<TransactionDetailEntity> listOfDetailTransaction = new List<TransactionDetailEntity>();
+        private List<TransactionDetailEntity> listOfSumTransaction = new List<TransactionDetailEntity>();
         private int transactionDetailId;
         public FormTransaction()
         {
@@ -39,6 +42,7 @@ namespace CashierFormApp.Views
             controller = new TransactionController();
             productController = new ProductController();
             transactionDetailController = new TransactionDetailController();
+
             GetNewTransactionDetailId();
         }
 
@@ -87,42 +91,66 @@ namespace CashierFormApp.Views
             }
         }
 
-        private void UpdateSumTransaction(ProductTransaction product)
+        private void UpdateSumTransaction(int transactionDetailId)
         {
-            bool productSumFound = false;
+            //MessageBox.Show("Code Product Found.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //getData 
+            listOfSumTransaction = transactionDetailController.ReadByTransactionDetailId(transactionDetailId);
 
-            foreach (ListViewItem item in listSumTransaction.Items)
+            if(listOfSumTransaction.Any())
             {
-                if (item.Text == product.ProductCode)
+                listSumTransaction.Items.Clear();
+
+                foreach (var value in listOfSumTransaction)
                 {
-                    productSumFound = true;
+                    var item = new ListViewItem(value.Qty.ToString());
+                    item.SubItems.Add(value.Qty.ToString());
+                    item.SubItems.Add(value.ProductName);
+                    item.SubItems.Add("Rp. " + value.Price.ToString("N0"));
+                    listSumTransaction.Items.Add(item);
 
-                    string qtyText = item.SubItems[1].Text.Replace("x", "").Trim();
-                    int currentQty = int.Parse(qtyText);
-                    int newQty = currentQty + product.Quantity;
-
-                    string priceText = item.SubItems[3].Text.Replace("Rp.", "").Trim();
-                    int currentPrice = int.Parse(priceText.Replace(",", ""));
-                    int newTotalPrice = currentPrice + (product.Quantity * 15000);
-
-                    item.SubItems[1].Text = newQty.ToString() + "x"; 
-                    item.SubItems[3].Text = "Rp. " + newTotalPrice.ToString("N0"); 
-                    break;
+                    //CalculateTotalPrice();
                 }
             }
-
-            if (!productSumFound)
+            else
             {
-                int totalPrice = product.Quantity * product.Price;
-
-                var item = new ListViewItem(product.ProductCode);
-                item.SubItems.Add(product.Quantity.ToString() + "x");
-                item.SubItems.Add(product.ProductName);  
-                item.SubItems.Add("Rp. " + totalPrice.ToString("N0")); 
-
-                listSumTransaction.Items.Add(item);
+                MessageBox.Show("Code Product Not Found.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            CalculateTotalPrice();
+            //bool productSumFound = false;
+
+            //foreach (ListViewItem item in listSumTransaction.Items)
+            //{
+            //    if (item.Text == product.ProductCode)
+            //    {
+            //        productSumFound = true;
+
+            //        string qtyText = item.SubItems[1].Text.Replace("x", "").Trim();
+            //        int currentQty = int.Parse(qtyText);
+            //        int newQty = currentQty + product.Quantity;
+
+            //        string priceText = item.SubItems[3].Text.Replace("Rp.", "").Trim();
+            //        int currentPrice = int.Parse(priceText.Replace(",", ""));
+            //        int newTotalPrice = currentPrice + (product.Quantity * 15000);
+
+            //        item.SubItems[1].Text = newQty.ToString() + "x";
+            //        item.SubItems[3].Text = "Rp. " + newTotalPrice.ToString("N0");
+            //        break;
+            //    }
+            //}
+
+            //if (!productSumFound)
+            //{
+            //    int totalPrice = product.Quantity * product.Price;
+
+            //    var item = new ListViewItem(product.ProductCode);
+            //    item.SubItems.Add(product.Quantity.ToString() + "x");
+            //    item.SubItems.Add(product.ProductName);
+            //    item.SubItems.Add("Rp. " + totalPrice.ToString("N0"));
+
+            //    listSumTransaction.Items.Add(item);
+            //}
+
+            //CalculateTotalPrice();
         }
 
         private void UpdateSumTransactionAfterDeletion(string productCode, decimal productPrice)
@@ -194,14 +222,13 @@ namespace CashierFormApp.Views
                     {
                         foreach (var value in listOfProduct)
                         {
-                            var item = new ListViewItem(value.Code);
-                            item.SubItems.Add(value.Name);
-                            item.SubItems.Add("Rp. " + value.Price.ToString("N0"));
-                            listTransaction.Items.Add(item);
-
                             int qty = 1;
-                            transactionDetailController.Create(transactionDetailId, value.ProductId, qty, value.Price);
-                            //UpdateSumTransaction(new ProductTransaction(value.Code, value.Name, Convert.ToInt32(value.Price)));
+                            var createData = transactionDetailController.Create(transactionDetailId, value.ProductId, qty, value.Price);
+
+                            if(createData > 0)
+                            {
+                                LoadDetailTransaksi();
+                            }
                         }
                     }
                     else
@@ -214,21 +241,89 @@ namespace CashierFormApp.Views
             }
         }
 
+        private void LoadDetailTransaksi()
+        {
+            listOfDetailTransaction = transactionDetailController.ReadDetailByTransactionDetailId(transactionDetailId);
+
+            if (listOfDetailTransaction.Any())
+            {
+                //MessageBox.Show("ii", "ind", MessageBoxButtons.OK);
+                listTransaction.Items.Clear();
+                foreach (var valueDetail in listOfDetailTransaction)
+                {
+                    var item = new ListViewItem(valueDetail.ProductCode);
+                    item.SubItems.Add(valueDetail.ProductName);
+                    item.SubItems.Add(valueDetail.Qty.ToString());
+                    item.SubItems.Add("Rp. " + valueDetail.Price.ToString("N0"));
+                    listTransaction.Items.Add(item);
+
+                    UpdateSumTransaction(transactionDetailId);
+                }
+            }
+        }
+
+        //private void BtnDelete_Click(object sender, EventArgs e)
+        //{
+        //    if (listTransaction.SelectedItems.Count > 0)
+        //    {
+        //        //var selectedItem = listTransaction.SelectedItems[0];
+
+        //        //string productCode = selectedItem.Text;
+        //        //string productPriceText = selectedItem.SubItems[2].Text.Replace("Rp.", "").Replace(",", "").Trim();
+        //        //decimal productPrice = decimal.Parse(productPriceText);
+
+        //        //listTransaction.Items.Remove(selectedItem);
+
+        //        //UpdateSumTransactionAfterDeletion(productCode, productPrice);
+
+        //        //CalculateTotalPrice();
+        //        TransactionDetailEntity transactionDetail = listOfDetailTransaction[listTransaction.SelectedIndices[0]];
+
+        //        var hasil = transactionDetailController.Delete(transactionDetail);
+
+        //        if (hasil > 0) UpdateSumTransaction(transactionDetailId);
+
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Please select an item to delete.", "Delete Item", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //    }
+        //}
+
         private void BtnDelete_Click(object sender, EventArgs e)
         {
             if (listTransaction.SelectedItems.Count > 0)
             {
-                var selectedItem = listTransaction.SelectedItems[0];
+                int selectedIndex = listTransaction.SelectedIndices[0];
 
-                string productCode = selectedItem.Text;
-                string productPriceText = selectedItem.SubItems[2].Text.Replace("Rp.", "").Replace(",", "").Trim();
-                decimal productPrice = decimal.Parse(productPriceText);
+                MessageBox.Show(selectedIndex.ToString(), "Delete Item", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                
+                if (selectedIndex >= 0)
+                {
+                    // Get the selected transaction detail
+                    TransactionDetailEntity transactionDetail = listOfDetailTransaction[selectedIndex];
 
-                listTransaction.Items.Remove(selectedItem);
+                    MessageBox.Show("cek1.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // Delete the transaction detail
+                    var result = transactionDetailController.Delete(transactionDetail);
 
-                UpdateSumTransactionAfterDeletion(productCode, productPrice);
 
-                CalculateTotalPrice();
+                    if (result > 0)
+                    {
+                        MessageBox.Show("cek.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        // Reload transaction details and update the summary
+                        LoadDetailTransaksi();
+                        UpdateSumTransaction(transactionDetailId);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to delete the selected transaction.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                }
             }
             else
             {

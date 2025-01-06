@@ -173,15 +173,98 @@ namespace CashierFormApp.Model.Repository
 
             return list;
         }
+
+        public List<TransactionDetailEntity> ReadByTransactionDetailId(int transactionDetailId)
+        {
+            List<TransactionDetailEntity> list = new List<TransactionDetailEntity>();
+
+            try
+            {
+                string sql = @"SELECT transaction_detail_id, 
+                                        product.name, 
+                                        SUM(transaction_detail.qty) AS qty, 
+                                        SUM(transaction_detail.price) AS sub_total 
+                                FROM `transaction_detail`
+                                JOIN product ON product.product_id = transaction_detail.product_id
+                                WHERE transaction_detail.transaction_detail_id = @transaction_detail_id
+
+                                GROUP BY transaction_detail_id, transaction_detail.product_id";
+
+                using (MySqlCommand cmd = new MySqlCommand(sql, _conn))
+                {
+                    cmd.Parameters.AddWithValue("@transaction_detail_id", string.Format("{0}", transactionDetailId));
+                    using (MySqlDataReader dtr = cmd.ExecuteReader())
+                    {
+                        while (dtr.Read())
+                        {
+                            TransactionDetailEntity transactionDetail = new TransactionDetailEntity();
+                            transactionDetail.TransactionDetailId = Convert.ToInt32(dtr["transaction_detail_id"]);
+                            transactionDetail.Qty = Convert.ToInt32(dtr["qty"]);
+                            transactionDetail.ProductName = dtr["name"].ToString();
+                            transactionDetail.Price = Convert.ToInt32(dtr["sub_total"]);    
+
+                            list.Add(transactionDetail);
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print("ReadAll error: {0}", ex.Message);
+            }
+
+            return list;
+        }
+
+        public List<TransactionDetailEntity> ReadDetailByTransactionDetailId(int transactionDetailId)
+        {
+            List<TransactionDetailEntity> list = new List<TransactionDetailEntity>();
+
+            try
+            {
+                string sql = @"SELECT product.name, product.code, transaction_detail.* 
+                                FROM `transaction_detail`
+                                JOIN product ON product.product_id = transaction_detail.product_id
+                                WHERE transaction_detail_id = 1";
+
+                using (MySqlCommand cmd = new MySqlCommand(sql, _conn))
+                {
+                    cmd.Parameters.AddWithValue("@transaction_detail_id", string.Format("{0}", transactionDetailId));
+                    using (MySqlDataReader dtr = cmd.ExecuteReader())
+                    {
+                        while (dtr.Read())
+                        {
+                            TransactionDetailEntity transactionDetail = new TransactionDetailEntity();
+                            transactionDetail.TransactionDetailId = Convert.ToInt32(dtr["transaction_detail_id"]);
+                            transactionDetail.Qty = Convert.ToInt32(dtr["qty"]);
+                            transactionDetail.ProductCode = dtr["code"].ToString();
+                            transactionDetail.ProductName = dtr["name"].ToString();
+                            transactionDetail.Price = Convert.ToInt32(dtr["price"]);
+                            transactionDetail.Urut = Convert.ToInt32(dtr["urut"]);
+
+                            list.Add(transactionDetail);
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print("ReadAll error: {0}", ex.Message);
+            }
+
+            return list;
+        }
         public int Delete(TransactionDetailEntity transactionDetail)
         {
             int result = 0;
 
-            string sql = @"DELETE FROM transactionDetail WHERE `transactionDetail`.`transactionDetail_id` = @transactionDetail_id";
+            string sql = @"DELETE FROM transaction_detail WHERE `transaction_detail`.`urut` = @urut";
 
             using (MySqlCommand cmd = new MySqlCommand(sql, _conn))
             {
-                //cmd.Parameters.AddWithValue("@transactionDetail_id", transactionDetail.transactionDetailId);
+                cmd.Parameters.AddWithValue("@urut", transactionDetail.Urut);
                 try
                 {
                     result = cmd.ExecuteNonQuery();

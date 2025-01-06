@@ -11,7 +11,10 @@ namespace CashierFormApp.Model.Entity
         public int Urut { get; set; }
         public int TransactionDetailId { get; set; }
         public int ProductId { get; set; }
-        public int qty {  get; set; }
-        public double price {  get; set; }
+        public int Qty {  get; set; }
+        public double Price {  get; set; }
+        public string ProductName { get; set; }
+
+        public string ProductCode { get; set; }
     }
 }
