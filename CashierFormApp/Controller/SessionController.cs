@@ -30,7 +30,7 @@ namespace CashierFormApp.Controller
 
         public void Clear()
         {
-            UserId = 0;
+            //UserId = 0;
             Username = null;
         }
     }

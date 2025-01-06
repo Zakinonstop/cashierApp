@@ -111,6 +111,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\AuthController.cs" />
+    <Compile Include="Controller\TransactionDetailController.cs" />
+    <Compile Include="Controller\TransactionController.cs" />
+    <Compile Include="Controller\MemberController.cs" />
     <Compile Include="Controller\ProductController.cs" />
     <Compile Include="Controller\RoleController.cs" />
     <Compile Include="Controller\SessionController.cs" />
@@ -123,12 +126,16 @@
     </Compile>
     <Compile Include="Model\Context\DbContext.cs" />
     <Compile Include="Model\Entity\Inventory_log.cs" />
-    <Compile Include="Model\Entity\Member.cs" />
+    <Compile Include="Model\Entity\MemberEntity.cs" />
     <Compile Include="Model\Entity\Restock.cs" />
     <Compile Include="Model\Entity\Role.cs" />
     <Compile Include="Model\Entity\ProductEntity.cs" />
-    <Compile Include="Model\Entity\Transaction.cs" />
+    <Compile Include="Model\Entity\TransactionDetailEntity.cs" />
+    <Compile Include="Model\Entity\TransactionEntity.cs" />
     <Compile Include="Model\Entity\User.cs" />
+    <Compile Include="Model\Repository\TransactionDetailRepository.cs" />
+    <Compile Include="Model\Repository\TransactionRepository.cs" />
+    <Compile Include="Model\Repository\MemberRepository.cs" />
     <Compile Include="Model\Repository\ProductRepository.cs" />
     <Compile Include="Model\Repository\RoleRepository.cs" />
     <Compile Include="Model\Repository\UserRepository.cs" />

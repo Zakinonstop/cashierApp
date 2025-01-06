@@ -1,5 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
+using CashierFormApp.Controller;
+using CashierFormApp.Model.Entity;
+using CashierFormApp.Views.Components;
+using Google.Protobuf.WellKnownTypes;
+using Guna.UI2.AnimatorNS;
+using MySqlX.XDevAPI;
+using Org.BouncyCastle.Bcpg;
+using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 namespace CashierFormApp.Views
 {
@@ -21,10 +31,23 @@ namespace CashierFormApp.Views
 
     public partial class FormTransaction : Form
     {
+        private TransactionController controller;
+        private ProductController productController;
+        private TransactionDetailController transactionDetailController;
+        private List<TransactionEntity> listOfTransaction = new List<TransactionEntity>();
+        private List<ProductEntity> listOfProduct = new List<ProductEntity>();
+        private List<TransactionDetailEntity> listOfDetailTransaction = new List<TransactionDetailEntity>();
+        private List<TransactionDetailEntity> listOfSumTransaction = new List<TransactionDetailEntity>();
+        private int transactionDetailId;
         public FormTransaction()
         {
             InitializeComponent();
             InitializeListView();
+            controller = new TransactionController();
+            productController = new ProductController();
+            transactionDetailController = new TransactionDetailController();
+
+            GetNewTransactionDetailId();
         }
 
         private void InitializeListView()
@@ -72,42 +95,64 @@ namespace CashierFormApp.Views
             }
         }
 
-        private void UpdateSumTransaction(ProductTransaction product)
+        private void UpdateSumTransaction(int transactionDetailId)
         {
-            bool productSumFound = false;
+            listOfSumTransaction = transactionDetailController.ReadByTransactionDetailId(transactionDetailId);
 
-            foreach (ListViewItem item in listSumTransaction.Items)
+            if(listOfSumTransaction.Any())
             {
-                if (item.Text == product.ProductCode)
+                listSumTransaction.Items.Clear();
+
+                foreach (var value in listOfSumTransaction)
                 {
-                    productSumFound = true;
+                    var item = new ListViewItem(value.Qty.ToString());
+                    item.SubItems.Add(value.Qty.ToString());
+                    item.SubItems.Add(value.ProductName);
+                    item.SubItems.Add("Rp. " + value.Price.ToString("N0"));
+                    listSumTransaction.Items.Add(item);
 
-                    string qtyText = item.SubItems[1].Text.Replace("x", "").Trim();
-                    int currentQty = int.Parse(qtyText);
-                    int newQty = currentQty + product.Quantity;
-
-                    string priceText = item.SubItems[3].Text.Replace("Rp.", "").Trim();
-                    int currentPrice = int.Parse(priceText.Replace(",", ""));
-                    int newTotalPrice = currentPrice + (product.Quantity * 15000);
-
-                    item.SubItems[1].Text = newQty.ToString() + "x"; 
-                    item.SubItems[3].Text = "Rp. " + newTotalPrice.ToString("N0"); 
-                    break;
+                    CalculateTotalPrice();
                 }
             }
-
-            if (!productSumFound)
+            else
             {
-                int totalPrice = product.Quantity * product.Price;
-
-                var item = new ListViewItem(product.ProductCode);
-                item.SubItems.Add(product.Quantity.ToString() + "x");
-                item.SubItems.Add(product.ProductName);  
-                item.SubItems.Add("Rp. " + totalPrice.ToString("N0")); 
-
-                listSumTransaction.Items.Add(item);
+                MessageBox.Show("Code Product Not Found.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            CalculateTotalPrice();
+            //bool productSumFound = false;
+
+            //foreach (ListViewItem item in listSumTransaction.Items)
+            //{
+            //    if (item.Text == product.ProductCode)
+            //    {
+            //        productSumFound = true;
+
+            //        string qtyText = item.SubItems[1].Text.Replace("x", "").Trim();
+            //        int currentQty = int.Parse(qtyText);
+            //        int newQty = currentQty + product.Quantity;
+
+            //        string priceText = item.SubItems[3].Text.Replace("Rp.", "").Trim();
+            //        int currentPrice = int.Parse(priceText.Replace(",", ""));
+            //        int newTotalPrice = currentPrice + (product.Quantity * 15000);
+
+            //        item.SubItems[1].Text = newQty.ToString() + "x";
+            //        item.SubItems[3].Text = "Rp. " + newTotalPrice.ToString("N0");
+            //        break;
+            //    }
+            //}
+
+            //if (!productSumFound)
+            //{
+            //    int totalPrice = product.Quantity * product.Price;
+
+            //    var item = new ListViewItem(product.ProductCode);
+            //    item.SubItems.Add(product.Quantity.ToString() + "x");
+            //    item.SubItems.Add(product.ProductName);
+            //    item.SubItems.Add("Rp. " + totalPrice.ToString("N0"));
+
+            //    listSumTransaction.Items.Add(item);
+            //}
+
+            //CalculateTotalPrice();
         }
 
         private void UpdateSumTransactionAfterDeletion(string productCode, decimal productPrice)
@@ -172,17 +217,48 @@ namespace CashierFormApp.Views
 
                 if (!string.IsNullOrEmpty(productCode))
                 {
-                    string productName = "Sample Product";
-                    int productPrice = 15000;
 
-                    var item = new ListViewItem(productCode);
-                    item.SubItems.Add(productName);
-                    item.SubItems.Add("Rp." + productPrice.ToString("N0"));
-                    listTransaction.Items.Add(item);
+                    listOfProduct = productController.ReadByCode(productCode);
 
-                    UpdateSumTransaction(new ProductTransaction(productCode, productName, productPrice));
+                    if (listOfProduct.Any())
+                    {
+                        foreach (var value in listOfProduct)
+                        {
+                            int qty = 1;
+                            var createData = transactionDetailController.Create(transactionDetailId, value.ProductId, qty, value.Price);
+
+                            if(createData > 0)
+                            {
+                                LoadDetailTransaksi();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Code Product Not Found.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
 
                     InputCode.Clear();
+                }
+            }
+        }
+
+        private void LoadDetailTransaksi()
+        {
+
+            listOfDetailTransaction = transactionDetailController.ReadDetailByTransactionDetailId(transactionDetailId);
+
+            if (listOfDetailTransaction.Any())
+            {
+                listTransaction.Items.Clear();
+                foreach (var valueDetail in listOfDetailTransaction)
+                {
+                    var item = new ListViewItem(valueDetail.ProductCode);
+                    item.SubItems.Add(valueDetail.ProductName);
+                    item.SubItems.Add("Rp. " + valueDetail.Price.ToString("N0"));
+                    listTransaction.Items.Add(item);
+
+                    UpdateSumTransaction(transactionDetailId);
                 }
             }
         }
@@ -191,25 +267,35 @@ namespace CashierFormApp.Views
         {
             if (listTransaction.SelectedItems.Count > 0)
             {
-                var selectedItem = listTransaction.SelectedItems[0];
+                int selectedIndex = listTransaction.SelectedIndices[0];
 
-                string productCode = selectedItem.Text;
-                string productPriceText = selectedItem.SubItems[2].Text.Replace("Rp.", "").Replace(",", "").Trim();
-                decimal productPrice = decimal.Parse(productPriceText);
+                if (selectedIndex >= 0 && selectedIndex < listOfDetailTransaction.Count)
+                {
+                    TransactionDetailEntity transactionDetail = listOfDetailTransaction[selectedIndex];
 
-                listTransaction.Items.Remove(selectedItem);
+                    var result = transactionDetailController.Delete(transactionDetail);
 
-                UpdateSumTransactionAfterDeletion(productCode, productPrice);
 
-                CalculateTotalPrice();
+                    if (result > 0)
+                    {
+                        // Reload transaction details and update the summary
+                        LoadDetailTransaksi();
+                        UpdateSumTransaction(transactionDetailId);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to delete the selected transaction.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                }
             }
             else
             {
                 MessageBox.Show("Please select an item to delete.", "Delete Item", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
-        
 
         private void BtnPay_Click(object sender, EventArgs e)
         {
@@ -236,21 +322,57 @@ namespace CashierFormApp.Views
                     MessageBox.Show("Payment amount is less than the total price.", "Payment Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
                 decimal change = paymentAmount - totalPrice;
 
-                MessageBox.Show($"Payment successful!\nChange: Rp. {change.ToString("N0")}", "Payment", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                TransactionEntity transaction = new TransactionEntity();
 
-                listTransaction.Items.Clear();
-                listSumTransaction.Items.Clear();
-                InputPay.Clear();
-                labelTax.Text = "Rp. 0";
-                labelTotal.Text = "Rp. 0";
+                var session = SessionController.Instance;
+                transaction.UserId = session.UserId;
+                transaction.TransactionDetailId = transactionDetailId;
+                transaction.TotalAmount = Convert.ToSingle(totalPrice);
+
+                int result = controller.Create(transaction);
+
+                if (result > 0)
+                {
+                    MessageBox.Show($"Payment successful!\nChange: Rp. {change.ToString("N0")}", "Payment", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    GetNewTransactionDetailId();
+                    LoadDetailTransaksi();
+                    listTransaction.Items.Clear();
+                    listSumTransaction.Items.Clear();
+                    InputPay.Clear();
+                    labelTax.Text = "Rp. 0";
+                    labelTotal.Text = "Rp. 0";
+                }else
+                {
+                    MessageBox.Show($"Payment Failed!", "Payment", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
             }
             catch (FormatException)
             {
                 MessageBox.Show("Invalid payment amount. Please enter a valid number.", "Payment Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private int GetNewTransactionDetailId()
+        {
+            int result = 0;
+
+            listOfTransaction = controller.GetMaxTransactionDetailId();
+
+            if (listOfTransaction != null)
+            {
+                foreach (var value in listOfTransaction)
+                {
+                   result = value.TransactionDetailId;
+                }
+            }
+
+            transactionDetailId = result + 1;
+
+            return result;
         }
     }
 }

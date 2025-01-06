@@ -11,14 +11,15 @@ using System.Web.Compilation;
 
 namespace CashierFormApp.Controller
 {
-    public class ProductController
+    public class MemberController
     {
-        private ProductRepository _repository;
-        public int Create(ProductEntity product)
+        private MemberRepository _repository;
+
+        public int Create(MemberEntity member)
         {
             int result = 0;
 
-            if (string.IsNullOrEmpty(product.Name))
+            if (string.IsNullOrEmpty(member.Name))
             {
                 MessageBox.Show("Nama harus diisi !!!", "Peringatan",
                 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -27,8 +28,8 @@ namespace CashierFormApp.Controller
 
             using (DbContext context = new DbContext())
             {
-                _repository = new ProductRepository(context);
-                result = _repository.Create(product);
+                _repository = new MemberRepository(context);
+                result = _repository.Create(member);
             }
 
             if (result > 0)
@@ -42,13 +43,13 @@ namespace CashierFormApp.Controller
 
             return result;
         }
-        public List<ProductEntity> ReadAll()
+        public List<MemberEntity> ReadAll()
         {
-            List<ProductEntity> list = new List<ProductEntity>();
+            List<MemberEntity> list = new List<MemberEntity>();
 
             using (DbContext context = new DbContext())
             {
-                _repository = new ProductRepository(context);
+                _repository = new MemberRepository(context);
 
                 list = _repository.ReadAll();
             }
@@ -56,38 +57,24 @@ namespace CashierFormApp.Controller
             return list;
         }
 
-        public List<ProductEntity> ReadByAnything(string keyword)
+        public List<MemberEntity> ReadByAnything(string keyword)
         {
-            List<ProductEntity> list = new List<ProductEntity>();
+            List<MemberEntity> list = new List<MemberEntity>();
 
             using (DbContext context = new DbContext())
             {
-                _repository = new ProductRepository(context);
+                _repository = new MemberRepository(context);
 
                 list = _repository.ReadByAnything(keyword);
             }
 
             return list;
         }
-
-        public List<ProductEntity> ReadByCode(string keyword)
-        {
-            List<ProductEntity> list = new List<ProductEntity>();
-
-            using (DbContext context = new DbContext())
-            {
-                _repository = new ProductRepository(context);
-
-                list = _repository.ReadByCode(keyword);
-            }
-
-            return list;
-        }
-        public int Update(ProductEntity product)
+        public int Update(MemberEntity member)
         {
             int result = 0;
 
-            if (string.IsNullOrEmpty(product.Name))
+            if (string.IsNullOrEmpty(member.Name))
             {
                 MessageBox.Show("Nama harus diisi !!!", "Peringatan",
                 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -96,8 +83,8 @@ namespace CashierFormApp.Controller
 
             using (DbContext context = new DbContext())
             {
-                _repository = new ProductRepository(context);
-                result = _repository.Update(product);
+                _repository = new MemberRepository(context);
+                result = _repository.Update(member);
             }
 
             if (result > 0)
@@ -111,24 +98,24 @@ namespace CashierFormApp.Controller
 
             return result;
         }
-        public int Delete(ProductEntity product)
+        public int Delete(MemberEntity member)
         {
             int result = 0;
 
             using (DbContext context = new DbContext())
             {
-                _repository = new ProductRepository(context);
-                result = _repository.Delete(product);
+                _repository = new MemberRepository(context);
+                result = _repository.Delete(member);
             }
 
             if (result > 0)
             {
-                MessageBox.Show("Product deleted successfully!", "Delete Product", 
+                MessageBox.Show("Member deleted successfully!", "Delete Member",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("Product deleted failed!", "Confirm Delete",
+                MessageBox.Show("Member deleted failed!", "Confirm Delete",
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
 

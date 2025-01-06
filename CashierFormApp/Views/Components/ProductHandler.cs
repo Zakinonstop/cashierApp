@@ -32,8 +32,13 @@ namespace CashierFormApp.Views.Components
         public ProductHandler()
         {
             InitializeComponent();
-            //product = new ProductEntity();
             controller = new ProductController();
+        }
+
+        public ProductHandler(string title, ProductController controller) : this()
+        {
+            this.Text = title;
+            this.controller = controller;
         }
 
         public ProductHandler(string title, ProductEntity obj, ProductController controller) : this()
@@ -53,7 +58,6 @@ namespace CashierFormApp.Views.Components
 
         private void ProductHandler_Load(object sender, EventArgs e)
         {
-            // Set txtCode to read-only if in Edit mode
             txtCode.ReadOnly = IsEditMode;
         }
 
@@ -77,7 +81,6 @@ namespace CashierFormApp.Views.Components
                 e.Handled = true;
             }
         }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(ProductName))
@@ -92,7 +95,7 @@ namespace CashierFormApp.Views.Components
             product.Code = txtCode.Text;
             product.Name = txtProduct.Text;
             product.Stock = Convert.ToInt32(txtStock.Text);
-            product.Price = Convert.ToDouble(txtPrice.Text);
+            product.Price = Convert.ToSingle(txtPrice.Text);
 
             int result = 0;
 
@@ -116,9 +119,6 @@ namespace CashierFormApp.Views.Components
                     this.Close();
                 }
             }
-
-
-
         }
 
     }
