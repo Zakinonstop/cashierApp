@@ -21,8 +21,8 @@ namespace CashierFormApp.Model.Repository
         {
             int result = 0;
 
-            string sql = @"INSERT INTO `transaction` (`user_id`, `transaction_detail_id`, `datetime`, `total_amount`, `member_id`) 
-                                VALUES (@userId, @transactionDetailId, @datetime, @totalAmount, @memberId)";
+            string sql = @"INSERT INTO `transaction` (`user_id`, `transaction_detail_id`, `datetime`, `total_amount`, `paid`, `changed`, `member_id`) 
+                                VALUES (@userId, @transactionDetailId, @datetime, @totalAmount, @paid, @changed, @memberId)";
 
             using (MySqlCommand cmd = new MySqlCommand(sql, _conn))
             {
@@ -30,6 +30,8 @@ namespace CashierFormApp.Model.Repository
                 cmd.Parameters.AddWithValue("@transactionDetailId", transaction.TransactionDetailId);
                 cmd.Parameters.AddWithValue("@datetime", transaction.Datetime);
                 cmd.Parameters.AddWithValue("@totalAmount", transaction.TotalAmount);
+                cmd.Parameters.AddWithValue("@paid", transaction.Paid);
+                cmd.Parameters.AddWithValue("@changed", transaction.Changed);
                 cmd.Parameters.AddWithValue("@memberId", transaction.MemberId);
 
                 try
@@ -56,11 +58,6 @@ namespace CashierFormApp.Model.Repository
 
             using (MySqlCommand cmd = new MySqlCommand(sql, _conn))
             {
-                //cmd.Parameters.AddWithValue("@transaction_id", transaction.transactionId);
-                //cmd.Parameters.AddWithValue("@nik", transaction.Nik);
-                //cmd.Parameters.AddWithValue("@name", transaction.Name);
-                //cmd.Parameters.AddWithValue("@shopping", transaction.Shopping);
-                //cmd.Parameters.AddWithValue("@address", transaction.Address);
                 try
                 {
                     result = cmd.ExecuteNonQuery();
@@ -78,7 +75,8 @@ namespace CashierFormApp.Model.Repository
 
             try
             {
-                string sql = @"SELECT * FROM `transaction`";
+                string sql = @"SELECT user.username, transaction.* FROM `transaction`
+                                JOIN user ON user.user_id = transaction.user_id";
 
                 using (MySqlCommand cmd = new MySqlCommand(sql, _conn))
                 {
@@ -89,6 +87,7 @@ namespace CashierFormApp.Model.Repository
                             TransactionEntity transaction = new TransactionEntity();
                             transaction.TransactionId = Convert.ToInt32(dtr["transaction_id"]);
                             transaction.UserId = Convert.ToInt32(dtr["user_id"]);
+                            transaction.Username = dtr["username"].ToString();
                             transaction.TransactionDetailId = Convert.ToInt32(dtr["transaction_detail_id"]);
                             transaction.Datetime = dtr["datetime"].ToString();
                             transaction.TotalAmount = Convert.ToSingle( dtr["total_amount"] );
@@ -145,14 +144,15 @@ namespace CashierFormApp.Model.Repository
 
             try
             {
-                string sql = @"SELECT * FROM `transaction` 
-                                WHERE user_id LIKE @keyword OR
-                                transaction_detail_id LIKE @keyword OR
-                                datetime LIKE @keyword OR
-                                paid LIKE @keyword OR
-                                changed LIKE @keyword OR
-                                member_id LIKE @keyword OR
-                                total_amount LIKE @keyword  
+                string sql = @"SELECT user.username, transaction.* FROM `transaction` 
+                                JOIN user ON user.user_id = transaction.user_id
+                                WHERE transaction.user_id LIKE @keyword OR
+                                    transaction.transaction_detail_id LIKE @keyword OR
+                                    transaction.datetime LIKE @keyword OR
+                                    transaction.paid LIKE @keyword OR
+                                    transaction.changed LIKE @keyword OR
+                                    transaction.member_id LIKE @keyword OR
+                                    transaction.total_amount LIKE @keyword  
                                ORDER BY `transaction`.`transaction_id` ASC";
 
                 using (MySqlCommand cmd = new MySqlCommand(sql, _conn))
@@ -165,6 +165,7 @@ namespace CashierFormApp.Model.Repository
                             TransactionEntity transaction = new TransactionEntity();
                             transaction.TransactionId = Convert.ToInt32(dtr["transaction_id"]);
                             transaction.UserId = Convert.ToInt32(dtr["user_id"]);
+                            transaction.Username = dtr["username"].ToString();
                             transaction.TransactionDetailId = Convert.ToInt32(dtr["transaction_detail_id"]);
                             transaction.Datetime = dtr["datetime"].ToString();
                             transaction.TotalAmount = Convert.ToSingle(dtr["total_amount"]);

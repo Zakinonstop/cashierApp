@@ -37,6 +37,7 @@ namespace CashierFormApp.Views.Components
             listTansactionLog.GridLines = false;
             listTansactionLog.HeaderStyle = ColumnHeaderStyle.None;
 
+            listTansactionLog.Columns.Add("No", 30, HorizontalAlignment.Left);
             listTansactionLog.Columns.Add("Date", 180, HorizontalAlignment.Left);
             listTansactionLog.Columns.Add("Cashier", 300, HorizontalAlignment.Left);
             listTansactionLog.Columns.Add("Paid", 200, HorizontalAlignment.Left);
@@ -57,29 +58,10 @@ namespace CashierFormApp.Views.Components
             }
         }
 
-        private void AddDummyData()
-        {
-            // Sample dummy data
-            var dummyData = new List<string[]>
-            {
-                new string[] { "12 Jan 2025 - 19:20", "Shabbah Athabiyyu", "Rp 150.000,00", "Rp 10.000,00", "Rp 140.000,00" },
-                new string[] { "12 Jan 2025 - 19:25", "Shabbah Athabiyyu", "Rp 200.000,00", "Rp 50.000,00", "Rp 150.000,00" },
-                new string[] { "12 Jan 2025 - 19:30", "Shabbah Athabiyyu", "Rp 100.000,00", "Rp 20.000,00", "Rp 80.000,00" },
-                new string[] { "12 Jan 2025 - 19:35", "Shabbah Athabiyyu", "Rp 300.000,00", "Rp 150.000,00", "Rp 150.000,00" }
-            };
-
-            // Add rows to ListView
-            foreach (var data in dummyData)
-            {
-                ListViewItem item = new ListViewItem(data);
-                listTansactionLog.Items.Add(item);
-            }
-        }
-
         private void LoadDataTransaction()
         {
             listOfTransactionLog = controller.ReadAll();
-            MessageBox.Show($"Total records: {listOfTransactionLog.Count}");
+            //MessageBox.Show($"Total records: {listOfTransactionLog.Count}");
 
             if (listOfTransactionLog.Any())
             {
@@ -89,6 +71,7 @@ namespace CashierFormApp.Views.Components
                     var item = new ListViewItem(noUrut.ToString());
 
                     item.SubItems.Add(value.Datetime.ToString());
+                    item.SubItems.Add(value.Username);
                     item.SubItems.Add("Rp. " + value.Paid.ToString());
                     item.SubItems.Add("Rp. " + value.Changed.ToString());
                     item.SubItems.Add("Rp. " + value.TotalAmount.ToString());
@@ -109,6 +92,7 @@ namespace CashierFormApp.Views.Components
                 var item = new ListViewItem(noUrut.ToString());
 
                 item.SubItems.Add(value.Datetime.ToString());
+                item.SubItems.Add(value.Username);
                 item.SubItems.Add("Rp. " + value.Paid.ToString());
                 item.SubItems.Add("Rp. " + value.Changed.ToString());
                 item.SubItems.Add("Rp. " + value.TotalAmount.ToString());

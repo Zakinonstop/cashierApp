@@ -49,6 +49,7 @@ namespace CashierFormApp.Views
             transactionDetailController = new TransactionDetailController();
 
             GetNewTransactionDetailId();
+            LoadDetailTransaksi();
         }
 
         private void InitializeListView()
@@ -119,41 +120,6 @@ namespace CashierFormApp.Views
             {
                 MessageBox.Show("Code Product Not Found.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            //bool productSumFound = false;
-
-            //foreach (ListViewItem item in listSumTransaction.Items)
-            //{
-            //    if (item.Text == product.ProductCode)
-            //    {
-            //        productSumFound = true;
-
-            //        string qtyText = item.SubItems[1].Text.Replace("x", "").Trim();
-            //        int currentQty = int.Parse(qtyText);
-            //        int newQty = currentQty + product.Quantity;
-
-            //        string priceText = item.SubItems[3].Text.Replace("Rp.", "").Trim();
-            //        int currentPrice = int.Parse(priceText.Replace(",", ""));
-            //        int newTotalPrice = currentPrice + (product.Quantity * 15000);
-
-            //        item.SubItems[1].Text = newQty.ToString() + "x";
-            //        item.SubItems[3].Text = "Rp. " + newTotalPrice.ToString("N0");
-            //        break;
-            //    }
-            //}
-
-            //if (!productSumFound)
-            //{
-            //    int totalPrice = product.Quantity * product.Price;
-
-            //    var item = new ListViewItem(product.ProductCode);
-            //    item.SubItems.Add(product.Quantity.ToString() + "x");
-            //    item.SubItems.Add(product.ProductName);
-            //    item.SubItems.Add("Rp. " + totalPrice.ToString("N0"));
-
-            //    listSumTransaction.Items.Add(item);
-            //}
-
-            //CalculateTotalPrice();
         }
 
         private decimal CalculateTotalPrice()
@@ -304,6 +270,9 @@ namespace CashierFormApp.Views
                 transaction.TransactionDetailId = transactionDetailId;
                 transaction.Datetime = now.ToString("yyyy-MM-dd HH:mm:ss");
                 transaction.TotalAmount = Convert.ToSingle(totalPrice);
+                transaction.Paid = Convert.ToSingle(paymentAmount);
+                transaction.Changed = Convert.ToSingle(change);
+                transaction.MemberId = 3;
 
                 int result = controller.Create(transaction);
 
