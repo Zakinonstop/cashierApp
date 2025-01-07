@@ -11,7 +11,10 @@ namespace CashierFormApp.Model.Entity
         public int TransactionId { get; set; }
         public int UserId { get; set; }
         public int TransactionDetailId {  get; set; }
+        public string Datetime { get; set; }
         public float TotalAmount {  get; set; }
+        public float Paid { get; set; }
+        public float Changed { get; set; }
         public int MemberId {  get; set; }
     }
 }

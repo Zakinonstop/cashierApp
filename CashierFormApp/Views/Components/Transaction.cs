@@ -7,16 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CashierFormApp.Controller;
+using CashierFormApp.Model.Entity;
 
 namespace CashierFormApp.Views.Components
 {
     public partial class Transaction : UserControl
     {
+        private TransactionController controller;
+        private List<TransactionEntity> listOfTransactionLog = new List<TransactionEntity>();
         public Transaction()
         {
             InitializeComponent();
             InitializeListView();
-            AddDummyData(); // Add dummy data
+            //AddDummyData(); // Add dummy data
+            controller = new TransactionController();
+            LoadDataTransaction();
 
             this.SetStyle(ControlStyles.UserPaint, true);
             this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
@@ -68,6 +74,52 @@ namespace CashierFormApp.Views.Components
                 ListViewItem item = new ListViewItem(data);
                 listTansactionLog.Items.Add(item);
             }
+        }
+
+        private void LoadDataTransaction()
+        {
+            listOfTransactionLog = controller.ReadAll();
+            MessageBox.Show($"Total records: {listOfTransactionLog.Count}");
+
+            if (listOfTransactionLog.Any())
+            {
+                foreach (var value in listOfTransactionLog)
+                {
+                    var noUrut = listOfTransactionLog.IndexOf(value) + 1;
+                    var item = new ListViewItem(noUrut.ToString());
+
+                    item.SubItems.Add(value.Datetime.ToString());
+                    item.SubItems.Add("Rp. " + value.Paid.ToString());
+                    item.SubItems.Add("Rp. " + value.Changed.ToString());
+                    item.SubItems.Add("Rp. " + value.TotalAmount.ToString());
+                    listTansactionLog.Items.Add(item);
+                }
+            }
+        }
+
+        private void Search()
+        {
+            listTansactionLog.Items.Clear();
+
+            listOfTransactionLog = controller.ReadByAnything(txtCari.Text);
+
+            foreach (var value in listOfTransactionLog)
+            {
+                var noUrut = listOfTransactionLog.IndexOf(value) + 1;
+                var item = new ListViewItem(noUrut.ToString());
+
+                item.SubItems.Add(value.Datetime.ToString());
+                item.SubItems.Add("Rp. " + value.Paid.ToString());
+                item.SubItems.Add("Rp. " + value.Changed.ToString());
+                item.SubItems.Add("Rp. " + value.TotalAmount.ToString());
+                listTansactionLog.Items.Add(item);
+            }
+        }
+
+
+        private void txtCari_TextChanged(object sender, EventArgs e)
+        {
+            Search();
         }
     }
 }

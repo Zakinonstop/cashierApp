@@ -155,36 +155,6 @@ namespace CashierFormApp.Views
             //CalculateTotalPrice();
         }
 
-        private void UpdateSumTransactionAfterDeletion(string productCode, decimal productPrice)
-        {
-            foreach (ListViewItem item in listSumTransaction.Items)
-            {
-                if (item.SubItems[0].Text == productCode)
-                {
-                    string qtyText = item.SubItems[1].Text.Replace("x", "").Trim();
-                    int currentQty = int.Parse(qtyText);
-
-                    string totalPriceText = item.SubItems[3].Text.Replace("Rp.", "").Replace(",", "").Trim();
-                    decimal currentTotalPrice = decimal.Parse(totalPriceText);
-
-                    int newQty = currentQty - 1;
-                    decimal newTotalPrice = currentTotalPrice - productPrice;
-
-                    if (newQty > 0)
-                    {
-                        item.SubItems[1].Text = newQty.ToString() + "x";
-                        item.SubItems[3].Text = "Rp. " + newTotalPrice.ToString("N0");
-                    }
-                    else
-                    {
-                        listSumTransaction.Items.Remove(item);
-                    }
-
-                    break;
-                }
-            }
-        }
-
         private decimal CalculateTotalPrice()
         {
             decimal totalPrice = 0;
@@ -326,9 +296,12 @@ namespace CashierFormApp.Views
 
                 TransactionEntity transaction = new TransactionEntity();
 
+                DateTime now = DateTime.Now;
+
                 var session = SessionController.Instance;
                 transaction.UserId = session.UserId;
                 transaction.TransactionDetailId = transactionDetailId;
+                transaction.Datetime = now.ToString("yyyy-MM-dd HH:mm:ss");
                 transaction.TotalAmount = Convert.ToSingle(totalPrice);
 
                 int result = controller.Create(transaction);

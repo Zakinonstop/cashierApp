@@ -21,14 +21,15 @@ namespace CashierFormApp.Model.Repository
         {
             int result = 0;
 
-            string sql = @"INSERT INTO `transaction` (`user_id`, `transaction_detail_id`, `total_amount`, `member_id`) 
-                                VALUES (@userId, @transactionDetailId, @totalAmount, @memberId)";
+            string sql = @"INSERT INTO `transaction` (`user_id`, `transaction_detail_id`, `datetime`, `total_amount`, `member_id`) 
+                                VALUES (@userId, @transactionDetailId, @datetime, @totalAmount, @memberId)";
 
             using (MySqlCommand cmd = new MySqlCommand(sql, _conn))
             {
-                cmd.Parameters.AddWithValue("@transactionDetailId", transaction.TransactionDetailId);
-                cmd.Parameters.AddWithValue("@totalAmount", transaction.TotalAmount);
                 cmd.Parameters.AddWithValue("@userId", transaction.UserId);
+                cmd.Parameters.AddWithValue("@transactionDetailId", transaction.TransactionDetailId);
+                cmd.Parameters.AddWithValue("@datetime", transaction.Datetime);
+                cmd.Parameters.AddWithValue("@totalAmount", transaction.TotalAmount);
                 cmd.Parameters.AddWithValue("@memberId", transaction.MemberId);
 
                 try
@@ -86,11 +87,14 @@ namespace CashierFormApp.Model.Repository
                         while (dtr.Read())
                         {
                             TransactionEntity transaction = new TransactionEntity();
-                            //transaction.transactionId = Convert.ToInt32(dtr["transaction_id"]);
-                            //transaction.Name = dtr["name"].ToString();
-                            //transaction.Nik = dtr["nik"].ToString();
-                            //transaction.Address = dtr["address"].ToString();
-                            //transaction.Shopping = Convert.ToInt32(dtr["shopping"]);
+                            transaction.TransactionId = Convert.ToInt32(dtr["transaction_id"]);
+                            transaction.UserId = Convert.ToInt32(dtr["user_id"]);
+                            transaction.TransactionDetailId = Convert.ToInt32(dtr["transaction_detail_id"]);
+                            transaction.Datetime = dtr["datetime"].ToString();
+                            transaction.TotalAmount = Convert.ToSingle( dtr["total_amount"] );
+                            transaction.Paid = Convert.ToSingle(dtr["paid"]);
+                            transaction.Changed = Convert.ToSingle(dtr["changed"]);
+                            transaction.MemberId = Convert.ToInt32(dtr["member_id"]);
 
                             list.Add(transaction);
                         }
@@ -142,11 +146,14 @@ namespace CashierFormApp.Model.Repository
             try
             {
                 string sql = @"SELECT * FROM `transaction` 
-                                WHERE code LIKE @keyword OR
-                                name LIKE @keyword OR
-                                stock LIKE @keyword OR
-                                price LIKE @keyword  
-                               ORDER BY `transaction`.`name` ASC";
+                                WHERE user_id LIKE @keyword OR
+                                transaction_detail_id LIKE @keyword OR
+                                datetime LIKE @keyword OR
+                                paid LIKE @keyword OR
+                                changed LIKE @keyword OR
+                                member_id LIKE @keyword OR
+                                total_amount LIKE @keyword  
+                               ORDER BY `transaction`.`transaction_id` ASC";
 
                 using (MySqlCommand cmd = new MySqlCommand(sql, _conn))
                 {
@@ -156,10 +163,14 @@ namespace CashierFormApp.Model.Repository
                         while (dtr.Read())
                         {
                             TransactionEntity transaction = new TransactionEntity();
-                            //transaction.transactionId = Convert.ToInt32(dtr["transaction_id"]);
-                            //transaction.Name = dtr["name"].ToString();
-                            //transaction.Nik = dtr["nik"].ToString();
-                            //transaction.Shopping = Convert.ToInt32(dtr["shopping"]);
+                            transaction.TransactionId = Convert.ToInt32(dtr["transaction_id"]);
+                            transaction.UserId = Convert.ToInt32(dtr["user_id"]);
+                            transaction.TransactionDetailId = Convert.ToInt32(dtr["transaction_detail_id"]);
+                            transaction.Datetime = dtr["datetime"].ToString();
+                            transaction.TotalAmount = Convert.ToSingle(dtr["total_amount"]);
+                            transaction.Paid = Convert.ToSingle(dtr["paid"]);
+                            transaction.Changed = Convert.ToSingle(dtr["changed"]);
+                            transaction.MemberId = Convert.ToInt32(dtr["member_id"]);
 
                             list.Add(transaction);
                         }
