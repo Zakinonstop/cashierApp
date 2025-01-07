@@ -111,10 +111,10 @@ namespace CashierFormApp.Model.Repository
             try
             {
                 string sql = @"SELECT * FROM `member` 
-                                WHERE code LIKE @keyword OR
+                                WHERE nik LIKE @keyword OR
                                 name LIKE @keyword OR
-                                stock LIKE @keyword OR
-                                price LIKE @keyword  
+                                address LIKE @keyword OR
+                                shopping LIKE @keyword  
                                ORDER BY `member`.`name` ASC";
 
                 using (MySqlCommand cmd = new MySqlCommand(sql, _conn))

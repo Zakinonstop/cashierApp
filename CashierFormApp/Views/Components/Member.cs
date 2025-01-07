@@ -146,5 +146,29 @@ namespace CashierFormApp.Views.Components
                 if (hasil > 0) LoadDataMember();
             }
         }
+
+        private void Search()
+        {
+            listMember.Items.Clear();
+
+            listOfMember = controller.ReadByAnything(txtCari.Text);
+
+            foreach (var value in listOfMember)
+            {
+                var noUrut = listMember.Items.Count + 1;
+                var item = new ListViewItem(noUrut.ToString());
+                item.SubItems.Add(value.Name);
+                item.SubItems.Add(value.Address);
+                item.SubItems.Add(value.Nik.ToString());
+                item.SubItems.Add(value.Shopping.ToString());
+
+                listMember.Items.Add(item);
+            }
+        }
+
+        private void txtCari_TextChanged(object sender, EventArgs e)
+        {
+            Search();
+        }
     }
 }

@@ -21,14 +21,15 @@ namespace CashierFormApp.Model.Repository
         {
             int result = 0;
 
-            string sql = @"INSERT INTO `transaction` (`user_id`, `transaction_detail_id`, `total_amount`) 
-                                VALUES (@userId, @transactionDetailId, @totalAmount)";
+            string sql = @"INSERT INTO `transaction` (`user_id`, `transaction_detail_id`, `total_amount`, `member_id`) 
+                                VALUES (@userId, @transactionDetailId, @totalAmount, @memberId)";
 
             using (MySqlCommand cmd = new MySqlCommand(sql, _conn))
             {
                 cmd.Parameters.AddWithValue("@transactionDetailId", transaction.TransactionDetailId);
                 cmd.Parameters.AddWithValue("@totalAmount", transaction.TotalAmount);
                 cmd.Parameters.AddWithValue("@userId", transaction.UserId);
+                cmd.Parameters.AddWithValue("@memberId", transaction.MemberId);
 
                 try
                 {
