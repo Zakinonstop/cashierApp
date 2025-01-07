@@ -70,6 +70,20 @@ namespace CashierFormApp.Controller
 
             return list;
         }
+
+        public List<MemberEntity> ReadByNik(string keyword)
+        {
+            List<MemberEntity> list = new List<MemberEntity>();
+
+            using (DbContext context = new DbContext())
+            {
+                _repository = new MemberRepository(context);
+
+                list = _repository.ReadByNik(keyword);
+            }
+
+            return list;
+        }
         public int Update(MemberEntity member)
         {
             int result = 0;

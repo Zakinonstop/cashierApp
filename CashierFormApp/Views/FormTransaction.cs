@@ -34,12 +34,15 @@ namespace CashierFormApp.Views
     {
         private TransactionController controller;
         private ProductController productController;
+        private MemberController memberController;
         private TransactionDetailController transactionDetailController;
         private List<TransactionEntity> listOfTransaction = new List<TransactionEntity>();
         private List<ProductEntity> listOfProduct = new List<ProductEntity>();
         private List<TransactionDetailEntity> listOfDetailTransaction = new List<TransactionDetailEntity>();
         private List<TransactionDetailEntity> listOfSumTransaction = new List<TransactionDetailEntity>();
+        private List<MemberEntity> listOfMember = new List<MemberEntity>();
         private int transactionDetailId;
+        private int memberId;
         public FormTransaction()
         {
             InitializeComponent();
@@ -47,6 +50,8 @@ namespace CashierFormApp.Views
             controller = new TransactionController();
             productController = new ProductController();
             transactionDetailController = new TransactionDetailController();
+            memberController = new MemberController();
+            memberId = 0;
 
             GetNewTransactionDetailId();
             LoadDetailTransaksi();
@@ -272,7 +277,9 @@ namespace CashierFormApp.Views
                 transaction.TotalAmount = Convert.ToSingle(totalPrice);
                 transaction.Paid = Convert.ToSingle(paymentAmount);
                 transaction.Changed = Convert.ToSingle(change);
-                transaction.MemberId = 3;
+
+                string nik = InputNIK.Text.Trim();
+                transaction.MemberId = (!string.IsNullOrEmpty(nik)) ? memberId : 0;
 
                 int result = controller.Create(transaction);
 
@@ -285,6 +292,7 @@ namespace CashierFormApp.Views
                     listTransaction.Items.Clear();
                     listSumTransaction.Items.Clear();
                     InputPay.Clear();
+                    InputNIK.Clear();
                     labelTax.Text = "Rp. 0";
                     labelTotal.Text = "Rp. 0";
                 }else
@@ -329,6 +337,39 @@ namespace CashierFormApp.Views
                 FormLogin.Show();
                 this.Hide();
 
+            }
+        }
+
+        private void InputNIK_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+
+                string nik = InputNIK.Text.Trim();
+
+                if (!string.IsNullOrEmpty(nik))
+                {
+
+                    listOfMember = memberController.ReadByNik(nik);
+
+                    if (listOfMember.Any())
+                    {
+                        foreach (var value in listOfMember)
+                        {
+                            memberId = value.MemberId;
+                            MessageBox.Show("Member Found. With Name " + value.Name , "Information", MessageBoxButtons.OK);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("NIK Not Found.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        memberId = 0;
+                    }
+
+                    //InputCode.Clear();
+                }
             }
         }
     }

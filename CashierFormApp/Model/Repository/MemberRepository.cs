@@ -143,6 +143,40 @@ namespace CashierFormApp.Model.Repository
 
             return list;
         }
+
+        public List<MemberEntity> ReadByNik(string keyword)
+        {
+            List<MemberEntity> list = new List<MemberEntity>();
+
+            try
+            {
+                string sql = @"SELECT * FROM `member` 
+                                WHERE nik = @keyword";
+
+                using (MySqlCommand cmd = new MySqlCommand(sql, _conn))
+                {
+                    cmd.Parameters.AddWithValue("@keyword", string.Format("{0}", keyword));
+                    using (MySqlDataReader dtr = cmd.ExecuteReader())
+                    {
+                        while (dtr.Read())
+                        {
+                            MemberEntity member = new MemberEntity();
+                            member.MemberId = Convert.ToInt32(dtr["member_id"]);
+                            member.Name = dtr["name"].ToString();
+
+                            list.Add(member);
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print("ReadAll error: {0}", ex.Message);
+            }
+
+            return list;
+        }
         public int Delete(MemberEntity member)
         {
             int result = 0;
