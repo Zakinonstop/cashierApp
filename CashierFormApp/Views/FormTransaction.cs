@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using CashierFormApp.Controller;
 using CashierFormApp.Model.Entity;
+using CashierFormApp.View;
 using CashierFormApp.Views.Components;
 using Google.Protobuf.WellKnownTypes;
 using Guna.UI2.AnimatorNS;
@@ -346,6 +347,20 @@ namespace CashierFormApp.Views
             transactionDetailId = result + 1;
 
             return result;
+        }
+
+        private void logout_click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("Are you sure you want to log out?", "Logout Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                FormLogin FormLogin = new FormLogin();
+                FormLogin.FormClosed += (s, args) => Application.Exit();
+                FormLogin.Show();
+                this.Hide();
+
+            }
         }
     }
 }

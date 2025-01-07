@@ -51,9 +51,9 @@ namespace CashierFormApp.Views.Components
             if (listTansactionLog.Columns.Count > 1)
             {
                 int totalWidth = listTansactionLog.ClientSize.Width - 24;
-                int fixedWidth = 160 + 200 + 200 + 200;
+                int fixedWidth = 30 + 160 + 200 + 200 + 200 + 50;
 
-                listTansactionLog.Columns[1].Width = totalWidth - fixedWidth;
+                listTansactionLog.Columns[2].Width = totalWidth - fixedWidth;
             }
         }
 

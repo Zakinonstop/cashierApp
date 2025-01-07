@@ -205,5 +205,78 @@ namespace CashierFormApp.Model.Repository
             }
             return result;
         }
+
+        public TransactionSummary GetMonthlySummary()
+        {
+            TransactionSummary summary = new TransactionSummary();
+
+            try
+            {
+                string sql = @"SELECT 
+                                COUNT(*) AS total_transactions,
+                                SUM(total_amount) AS Total_Amount
+                                FROM transaction
+                                WHERE MONTH(datetime) = MONTH(CURRENT_DATE()) 
+                                  AND YEAR(datetime) = YEAR(CURRENT_DATE());";
+
+                using (MySqlCommand cmd = new MySqlCommand(sql, _conn))
+                {
+                    using (MySqlDataReader dtr = cmd.ExecuteReader())
+                    {
+                        if (dtr.Read())
+                        {
+                            summary.TotalTransactions = Convert.ToInt32(dtr["total_transactions"]);
+                            summary.TotalAmount = Convert.ToSingle(dtr["Total_Amount"]);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print("GetMonthlySummary error: {0}", ex.Message);
+            }
+
+            return summary;
+        }
+        public List<MonthlyTransactionSummary> GetMonthlyTransactionCounts()
+        {
+            List<MonthlyTransactionSummary> summaryList = new List<MonthlyTransactionSummary>();
+
+            try
+            {
+                string sql = @"
+                            SELECT 
+                                YEAR(datetime) AS year,
+                                MONTH(datetime) AS month,
+                                COUNT(*) AS transaction_count
+                            FROM transaction
+                            GROUP BY YEAR(CURRENT_DATE()), MONTH(datetime)
+                            ORDER BY year DESC, month DESC;";
+
+                using (MySqlCommand cmd = new MySqlCommand(sql, _conn))
+                {
+                    using (MySqlDataReader dtr = cmd.ExecuteReader())
+                    {
+                        while (dtr.Read())
+                        {
+                            MonthlyTransactionSummary summary = new MonthlyTransactionSummary
+                            {
+                                Year = Convert.ToInt32(dtr["year"]),
+                                Month = Convert.ToInt32(dtr["month"]),
+                                TransactionCount = Convert.ToInt32(dtr["transaction_count"])
+                            };
+
+                            summaryList.Add(summary);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print("GetMonthlyTransactionCounts error: {0}", ex.Message);
+            }
+
+            return summaryList;
+        }
     }
 }

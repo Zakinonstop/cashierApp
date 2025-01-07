@@ -55,12 +55,12 @@
             this.guna2ShadowPanel4 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.listTransaction = new System.Windows.Forms.ListView();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.InputNIK = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ShadowPanel2 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            this.InputNIK = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2ShadowPanel1.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
@@ -504,6 +504,35 @@
             this.tableLayoutPanel9.Size = new System.Drawing.Size(870, 148);
             this.tableLayoutPanel9.TabIndex = 11;
             // 
+            // InputNIK
+            // 
+            this.InputNIK.BackColor = System.Drawing.Color.Transparent;
+            this.InputNIK.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(35)))), ((int)(((byte)(60)))));
+            this.InputNIK.BorderRadius = 12;
+            this.InputNIK.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.InputNIK.DefaultText = "";
+            this.InputNIK.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.InputNIK.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.InputNIK.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.InputNIK.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.InputNIK.Dock = System.Windows.Forms.DockStyle.Top;
+            this.InputNIK.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.InputNIK.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.InputNIK.ForeColor = System.Drawing.Color.Black;
+            this.InputNIK.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.InputNIK.Location = new System.Drawing.Point(0, 0);
+            this.InputNIK.Margin = new System.Windows.Forms.Padding(0);
+            this.InputNIK.Name = "InputNIK";
+            this.InputNIK.PasswordChar = '\0';
+            this.InputNIK.PlaceholderForeColor = System.Drawing.Color.DimGray;
+            this.InputNIK.PlaceholderText = "Input NIK";
+            this.InputNIK.SelectedText = "";
+            this.InputNIK.ShadowDecoration.BorderRadius = 1;
+            this.InputNIK.ShadowDecoration.Depth = 10;
+            this.InputNIK.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.InputNIK.Size = new System.Drawing.Size(735, 48);
+            this.InputNIK.TabIndex = 9;
+            // 
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -541,6 +570,7 @@
             this.guna2ShadowPanel2.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.Dropped;
             this.guna2ShadowPanel2.Size = new System.Drawing.Size(500, 100);
             this.guna2ShadowPanel2.TabIndex = 10;
+            this.guna2ShadowPanel2.Click += new System.EventHandler(this.logout_click);
             // 
             // label2
             // 
@@ -578,35 +608,6 @@
             this.guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2CirclePictureBox1.TabIndex = 0;
             this.guna2CirclePictureBox1.TabStop = false;
-            // 
-            // InputNIK
-            // 
-            this.InputNIK.BackColor = System.Drawing.Color.Transparent;
-            this.InputNIK.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(35)))), ((int)(((byte)(60)))));
-            this.InputNIK.BorderRadius = 12;
-            this.InputNIK.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.InputNIK.DefaultText = "";
-            this.InputNIK.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.InputNIK.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.InputNIK.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.InputNIK.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.InputNIK.Dock = System.Windows.Forms.DockStyle.Top;
-            this.InputNIK.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.InputNIK.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.InputNIK.ForeColor = System.Drawing.Color.Black;
-            this.InputNIK.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.InputNIK.Location = new System.Drawing.Point(0, 0);
-            this.InputNIK.Margin = new System.Windows.Forms.Padding(0);
-            this.InputNIK.Name = "InputNIK";
-            this.InputNIK.PasswordChar = '\0';
-            this.InputNIK.PlaceholderForeColor = System.Drawing.Color.DimGray;
-            this.InputNIK.PlaceholderText = "Input NIK";
-            this.InputNIK.SelectedText = "";
-            this.InputNIK.ShadowDecoration.BorderRadius = 1;
-            this.InputNIK.ShadowDecoration.Depth = 10;
-            this.InputNIK.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.InputNIK.Size = new System.Drawing.Size(735, 48);
-            this.InputNIK.TabIndex = 9;
             // 
             // FormTransaction
             // 
