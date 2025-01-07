@@ -66,7 +66,7 @@ namespace CashierFormApp.Views.Components
             if (listProduct.Columns.Count > 1)
             {
                 int totalWidth = listProduct.ClientSize.Width - 24;
-                int fixedWidth = 30 + 160 + 160 + 160;
+                int fixedWidth = 30 + 160 + 160 + 160 + 50;
 
                 listProduct.Columns[2].Width = totalWidth - fixedWidth;
             }
