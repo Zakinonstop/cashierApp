@@ -163,5 +163,30 @@ namespace CashierFormApp.Model.Repository
             }
             return result;
         }
+        public int GetNewMembersCountThisMonth()
+        {
+            int newMembersCount = 0;
+
+            try
+            {
+                string sql = @"
+                                SELECT COUNT(*) AS new_members_count
+                                FROM member
+                                WHERE YEAR(created_at) = YEAR(CURRENT_DATE())
+                                  AND MONTH(created_at) = MONTH(CURRENT_DATE());
+                            ";
+
+                using (MySqlCommand cmd = new MySqlCommand(sql, _conn))
+                {
+                    newMembersCount = Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print("Error getting new members count: {0}", ex.Message);
+            }
+
+            return newMembersCount;
+        }
     }
 }

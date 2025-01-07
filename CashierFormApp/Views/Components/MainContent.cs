@@ -19,15 +19,30 @@ namespace CashierFormApp.Views.Components
         {
             InitializeComponent();
             InitializeChart();
+            InitializeTransaction();
+            InitializeMember();
+        }
+        private void InitializeTransaction()
+        {
+            TransactionRepository repository = new TransactionRepository(new DbContext());
+
+            var summary = repository.GetMonthlySummary();
+
+            transactionThisMonth.Text = summary.TotalTransactions.ToString();
+            totalTransactionThisMonth.Text = "Rp. " + summary.TotalAmount.ToString("N0");
+        }
+
+        private void InitializeMember()
+        {
+            MemberRepository repositoryMember = new MemberRepository(new DbContext());
+
+            int newMembersThisMonth = repositoryMember.GetNewMembersCountThisMonth();
+            memberThisMonth.Text = newMembersThisMonth.ToString();
         }
 
         private void InitializeChart()
         {
             TransactionRepository repository = new TransactionRepository(new DbContext());
-            var summary = repository.GetMonthlySummary();
-
-            transactionThisMonth.Text = summary.TotalTransactions.ToString();
-            totalTransactionThisMonth.Text = "Rp. " + summary.TotalAmount.ToString("N0");
 
             ChartArea chartArea1 = new ChartArea("BarChartArea");
             chart1.ChartAreas.Add(chartArea1);
