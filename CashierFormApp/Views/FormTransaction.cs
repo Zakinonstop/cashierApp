@@ -225,9 +225,14 @@ namespace CashierFormApp.Views
 
                     if (result > 0)
                     {
-                        // Reload transaction details and update the summary
+                        listTransaction.Items.Clear();
+                        listSumTransaction.Items.Clear();
+                        InputPay.Clear();
+                        InputNIK.Clear();
+                        memberId = 0;
+                        labelTax.Text = "Rp. 0";
+                        labelTotal.Text = "Rp. 0";
                         LoadDetailTransaksi();
-                        UpdateSumTransaction(transactionDetailId);
                     }
                     else
                     {
@@ -288,6 +293,11 @@ namespace CashierFormApp.Views
 
                 int result = controller.Create(transaction);
 
+                if (memberId != 0)
+                {
+                    UpdateShoppingCount(memberId);
+                }
+
                 if (result > 0)
                 {
                     MessageBox.Show($"Payment successful!\nChange: Rp. {change.ToString("N0")}", "Payment", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -298,6 +308,7 @@ namespace CashierFormApp.Views
                     listSumTransaction.Items.Clear();
                     InputPay.Clear();
                     InputNIK.Clear();
+                    memberId = 0;
                     labelTax.Text = "Rp. 0";
                     labelTotal.Text = "Rp. 0";
                 }else
@@ -310,6 +321,14 @@ namespace CashierFormApp.Views
             {
                 MessageBox.Show("Invalid payment amount. Please enter a valid number.", "Payment Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private int UpdateShoppingCount(int memberId)
+        {
+            int result = 0;
+
+            result = memberController.UpdateByMemberId(memberId);
+            return result;
         }
 
         private int GetNewTransactionDetailId()

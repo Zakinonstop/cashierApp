@@ -70,6 +70,64 @@ namespace CashierFormApp.Model.Repository
             }
             return result;
         }
+
+
+        public int GetShoppingCount(int memberId)
+        {
+            int result = 0;
+
+            try
+            {
+                string sql = @"SELECT COUNT(member_id) as 'shopping' FROM `transaction`
+                                WHERE member_id = @memberId";
+
+                using (MySqlCommand cmd = new MySqlCommand(sql, _conn))
+                {
+                    cmd.Parameters.AddWithValue("@memberId", string.Format("{0}", memberId));
+                    using (MySqlDataReader dtr = cmd.ExecuteReader())
+                    {
+                        while (dtr.Read())
+                        {
+                            result = Convert.ToInt32(dtr["shopping"]) + 1;
+
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print("ReadAll error: {0}", ex.Message);
+            }
+
+            return result;
+        }
+
+        public int UpdateByMemberId(int memberId)
+        {
+            int result = 0;
+
+            int shopping = GetShoppingCount(memberId);
+
+            string sql = @"UPDATE `member` 
+                            SET `shopping` = @shopping
+                            WHERE `member`.`member_id` = @member_id";
+
+            using (MySqlCommand cmd = new MySqlCommand(sql, _conn))
+            {
+                cmd.Parameters.AddWithValue("@member_id", memberId);
+                cmd.Parameters.AddWithValue("@shopping", shopping);
+                try
+                {
+                    result = cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.Print("Create error: {0}", ex.Message);
+                }
+            }
+            return result;
+        }
         public List<MemberEntity> ReadAll()
         {
             List<MemberEntity> list = new List<MemberEntity>();

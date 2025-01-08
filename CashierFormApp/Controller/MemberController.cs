@@ -112,6 +112,19 @@ namespace CashierFormApp.Controller
 
             return result;
         }
+
+        public int UpdateByMemberId(int memberId)
+        {
+            int result = 0;
+
+            using (DbContext context = new DbContext())
+            {
+                _repository = new MemberRepository(context);
+                result = _repository.UpdateByMemberId(memberId);
+            }
+
+            return result;
+        }
         public int Delete(MemberEntity member)
         {
             int result = 0;
