@@ -2,15 +2,23 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using CashierFormApp.Controller;
+using CashierFormApp.Model.Entity;
+using Guna.UI2.AnimatorNS;
 
 namespace CashierFormApp.Views.Components
 {
     public partial class Product : UserControl
     {
+        private ProductController controller;
+        private List<ProductEntity> listOfProduct = new List<ProductEntity>();
+
         public Product()
         {
             InitializeComponent();
             InitializeListView();
+            controller = new ProductController();
+            LoadDataProduct();
 
             this.SetStyle(ControlStyles.UserPaint, true);
             this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
@@ -25,6 +33,7 @@ namespace CashierFormApp.Views.Components
             listProduct.GridLines = false;
             listProduct.HeaderStyle = ColumnHeaderStyle.None;
 
+            listProduct.Columns.Add("No", 30, HorizontalAlignment.Left);
             listProduct.Columns.Add("Code", 160, HorizontalAlignment.Left);
             listProduct.Columns.Add("Product", 200, HorizontalAlignment.Left);
             listProduct.Columns.Add("Stock", 160, HorizontalAlignment.Right);
@@ -33,75 +42,60 @@ namespace CashierFormApp.Views.Components
             listProduct.Resize += (s, e) => AdjustColumnWidths();
         }
 
+        private void LoadDataProduct()
+        {
+            listProduct.Items.Clear();
+
+            listOfProduct = controller.ReadAll();
+
+            foreach (var value in listOfProduct)
+            {
+                var noUrut = listOfProduct.IndexOf(value) + 1;
+                var item = new ListViewItem(noUrut.ToString());
+                item.SubItems.Add(value.Code);
+                item.SubItems.Add(value.Name);
+                item.SubItems.Add(value.Stock.ToString());
+                item.SubItems.Add(value.Price.ToString());
+
+                listProduct.Items.Add(item);
+            }
+        }
+
         private void AdjustColumnWidths()
         {
             if (listProduct.Columns.Count > 1)
             {
                 int totalWidth = listProduct.ClientSize.Width - 24;
-                int fixedWidth = 160 + 160 + 160;
+                int fixedWidth = 30 + 160 + 160 + 160 + 50;
 
-                listProduct.Columns[1].Width = totalWidth - fixedWidth;
+                listProduct.Columns[2].Width = totalWidth - fixedWidth;
             }
         }
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
-            ProductHandler productHandler = new ProductHandler
-            {
-                IsEditMode = false,
-                Text = "Add Product"
-            };
+            ProductHandler productHandler = new ProductHandler("Add Data", controller);
 
-            productHandler.ProductCode = "";
-            productHandler.ProductName = "";
-            productHandler.Stock = "";
-            productHandler.Price = "";
+            productHandler.OnCreate += OnCreateEventHandler;
 
-            if (productHandler.ShowDialog() == DialogResult.OK)
-            {
-                ListViewItem newItem = new ListViewItem(new[]
-                {
-                    productHandler.ProductCode,
-                    productHandler.ProductName,
-                    productHandler.Stock,
-                    productHandler.Price
-                });
-
-                listProduct.Items.Add(newItem);
-
-                MessageBox.Show("Product added successfully!", "Add Product", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            productHandler.ShowDialog();
         }
 
         private void btnEditProduct_Click(object sender, EventArgs e)
         {
             if (listProduct.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Please select a product to edit.", "Edit Product", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a product to edit.", "Edit Data", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
-            }
-
-            ListViewItem selectedItem = listProduct.SelectedItems[0];
-
-            ProductHandler productHandler = new ProductHandler
+            }else
             {
-                IsEditMode = true, 
-                ProductCode = selectedItem.SubItems[0].Text,
-                ProductName = selectedItem.SubItems[1].Text,
-                Stock = selectedItem.SubItems[2].Text,
-                Price = selectedItem.SubItems[3].Text
-            };
+                ProductEntity product = listOfProduct[listProduct.SelectedIndices[0]];
 
-            productHandler.Text = "Edit Product"; 
+                ProductHandler productHandler = new ProductHandler("Edit Data", product, controller);
 
-            if (productHandler.ShowDialog() == DialogResult.OK)
-            {
-                selectedItem.SubItems[0].Text = productHandler.ProductCode;
-                selectedItem.SubItems[1].Text = productHandler.ProductName;
-                selectedItem.SubItems[2].Text = productHandler.Stock;
-                selectedItem.SubItems[3].Text = productHandler.Price;
+                productHandler.OnUpdate += OnUpdateEventHandler;
 
-                MessageBox.Show("Product updated successfully!", "Edit Product", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                productHandler.ShowDialog();
             }
         }
 
@@ -110,12 +104,12 @@ namespace CashierFormApp.Views.Components
         {
             if (listProduct.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Please select a product to delete.", "Delete Product", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a product to delete.", "Delete Data", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             ListViewItem selectedItem = listProduct.SelectedItems[0];
-            string productName = selectedItem.SubItems[1].Text;
+            string productName = selectedItem.SubItems[2].Text;
 
             DialogResult result = MessageBox.Show(
                 $"Are you sure you want to delete the product '{productName}'?",
@@ -126,11 +120,55 @@ namespace CashierFormApp.Views.Components
 
             if (result == DialogResult.Yes)
             {
-                listProduct.Items.Remove(selectedItem);
+                ProductEntity product = listOfProduct[listProduct.SelectedIndices[0]];
 
-                MessageBox.Show("Product deleted successfully!", "Delete Product", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                var hasil = controller.Delete(product);
+
+                if (hasil > 0) LoadDataProduct();
             }
         }
 
+        public void OnCreateEventHandler(ProductEntity product)
+        {
+            LoadDataProduct();
+        }
+
+        public void OnUpdateEventHandler(ProductEntity value)
+        {
+            int index = listProduct.SelectedIndices[0];
+
+            ListViewItem itemRow = listProduct.Items[index];
+
+            itemRow.SubItems[1].Text = value.Code;
+
+            itemRow.SubItems[2].Text = value.Name;
+
+            itemRow.SubItems[3].Text = value.Stock.ToString();
+
+            itemRow.SubItems[4].Text = value.Price.ToString();
+        }
+        private void Search()
+        {
+            listProduct.Items.Clear();
+
+            listOfProduct = controller.ReadByAnything(txtCari.Text);
+
+            foreach (var value in listOfProduct)
+            {
+                var noUrut = listProduct.Items.Count + 1;
+                var item = new ListViewItem(noUrut.ToString());
+                item.SubItems.Add(value.Code);
+                item.SubItems.Add(value.Name);
+                item.SubItems.Add(value.Stock.ToString());
+                item.SubItems.Add(value.Price.ToString());
+
+                listProduct.Items.Add(item);
+            }
+        }
+
+        private void txtCari_TextChanged(object sender, EventArgs e)
+        {
+            Search();
+        }
     }
 }

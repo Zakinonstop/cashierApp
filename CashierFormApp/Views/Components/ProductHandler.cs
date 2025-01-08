@@ -7,44 +7,57 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
+using CashierFormApp.Controller;
+using CashierFormApp.Model.Entity;
+using MySqlX.XDevAPI.Common;
 
 namespace CashierFormApp.Views.Components
 {
+    public delegate void CreateUpdateEventHandler(ProductEntity product);
     public partial class ProductHandler : Form
     {
-        public bool IsEditMode { get; set; } = false; 
+        public event CreateUpdateEventHandler OnCreate;
 
-        public string ProductCode
-        {
-            get => txtCode.Text;
-            set => txtCode.Text = value;
-        }
+        public event CreateUpdateEventHandler OnUpdate;
 
-        public string ProductName
-        {
-            get => txtProduct.Text;
-            set => txtProduct.Text = value;
-        }
+        private ProductController controller;
+        public bool IsEditMode { get; set; } = false;
 
-        public string Stock
-        {
-            get => txtStock.Text;
-            set => txtStock.Text = value;
-        }
+        private ProductEntity product;
 
-        public string Price
-        {
-            get => txtPrice.Text;
-            set => txtPrice.Text = value;
-        }
+        private int produckId;
+
+
         public ProductHandler()
         {
             InitializeComponent();
+            controller = new ProductController();
+        }
+
+        public ProductHandler(string title, ProductController controller) : this()
+        {
+            this.Text = title;
+            this.controller = controller;
+        }
+
+        public ProductHandler(string title, ProductEntity obj, ProductController controller) : this()
+        {
+            this.Text = title;
+            this.controller = controller;
+            IsEditMode = true;
+            product = obj;
+
+            produckId = product.ProductId;
+            txtCode.Text = product.Code;
+            txtPrice.Text =  product.Price.ToString();
+            txtProduct.Text = product.Name;
+            txtStock.Text = product.Stock.ToString();
+
         }
 
         private void ProductHandler_Load(object sender, EventArgs e)
         {
-            // Set txtCode to read-only if in Edit mode
             txtCode.ReadOnly = IsEditMode;
         }
 
@@ -68,7 +81,6 @@ namespace CashierFormApp.Views.Components
                 e.Handled = true;
             }
         }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(ProductName))
@@ -77,8 +89,36 @@ namespace CashierFormApp.Views.Components
                 return;
             }
 
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            if (!IsEditMode) product = new ProductEntity();
+
+            product.ProductId = produckId;
+            product.Code = txtCode.Text;
+            product.Name = txtProduct.Text;
+            product.Stock = Convert.ToInt32(txtStock.Text);
+            product.Price = Convert.ToSingle(txtPrice.Text);
+
+            int result = 0;
+
+            if (!IsEditMode){
+                result = controller.Create(product);
+
+                if (result > 0)
+                {
+                    OnCreate(product);
+                    txtCode.Clear();
+                    txtPrice.Clear();
+                    txtProduct.Clear();
+                    txtStock.Clear();
+                }
+            }else{
+                result = controller.Update(product);
+
+                if (result > 0)
+                {
+                    OnUpdate(product);
+                    this.Close();
+                }
+            }
         }
 
     }

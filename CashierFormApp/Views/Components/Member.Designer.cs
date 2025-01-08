@@ -40,12 +40,13 @@
             this.listMember = new System.Windows.Forms.ListView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.InputMember = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtCari = new Guna.UI2.WinForms.Guna2TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnDeleteMember = new Guna.UI2.WinForms.Guna2Button();
             this.btnEditMember = new Guna.UI2.WinForms.Guna2Button();
             this.btnAddMember = new Guna.UI2.WinForms.Guna2Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.guna2ShadowPanel3.SuspendLayout();
@@ -109,15 +110,17 @@
             // 
             // tableLayoutPanel4
             // 
-            this.tableLayoutPanel4.ColumnCount = 4;
+            this.tableLayoutPanel4.ColumnCount = 5;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 220F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
-            this.tableLayoutPanel4.Controls.Add(this.label7, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.label6, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.label8, 3, 0);
-            this.tableLayoutPanel4.Controls.Add(this.label1, 2, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label2, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label7, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label6, 2, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label8, 4, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label1, 3, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(24, 0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -131,7 +134,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(3, 16);
+            this.label7.Location = new System.Drawing.Point(53, 16);
             this.label7.Margin = new System.Windows.Forms.Padding(3, 16, 3, 16);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 23);
@@ -143,7 +146,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(223, 16);
+            this.label6.Location = new System.Drawing.Point(273, 16);
             this.label6.Margin = new System.Windows.Forms.Padding(3, 16, 3, 16);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(70, 23);
@@ -185,7 +188,7 @@
             this.guna2ShadowPanel4.Location = new System.Drawing.Point(0, 71);
             this.guna2ShadowPanel4.Margin = new System.Windows.Forms.Padding(0);
             this.guna2ShadowPanel4.Name = "guna2ShadowPanel4";
-            this.guna2ShadowPanel4.Padding = new System.Windows.Forms.Padding(24);
+            this.guna2ShadowPanel4.Padding = new System.Windows.Forms.Padding(24, 24, 24, 24);
             this.guna2ShadowPanel4.Radius = 6;
             this.guna2ShadowPanel4.ShadowColor = System.Drawing.Color.Black;
             this.guna2ShadowPanel4.Size = new System.Drawing.Size(1416, 550);
@@ -199,11 +202,12 @@
             this.listMember.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listMember.HideSelection = false;
             this.listMember.Location = new System.Drawing.Point(24, 24);
-            this.listMember.Margin = new System.Windows.Forms.Padding(24);
+            this.listMember.Margin = new System.Windows.Forms.Padding(24, 24, 24, 24);
             this.listMember.Name = "listMember";
             this.listMember.Size = new System.Drawing.Size(1368, 502);
             this.listMember.TabIndex = 0;
             this.listMember.UseCompatibleStateImageBehavior = false;
+            this.listMember.DoubleClick += new System.EventHandler(this.btnEditMember_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -225,40 +229,41 @@
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.AutoSize = true;
-            this.panel2.Controls.Add(this.InputMember);
+            this.panel2.Controls.Add(this.txtCari);
             this.panel2.Location = new System.Drawing.Point(807, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(0, 0, 0, 16);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(651, 48);
             this.panel2.TabIndex = 9;
             // 
-            // InputMember
+            // txtCari
             // 
-            this.InputMember.BackColor = System.Drawing.Color.Transparent;
-            this.InputMember.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(35)))), ((int)(((byte)(60)))));
-            this.InputMember.BorderRadius = 12;
-            this.InputMember.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.InputMember.DefaultText = "";
-            this.InputMember.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.InputMember.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.InputMember.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.InputMember.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.InputMember.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.InputMember.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.InputMember.ForeColor = System.Drawing.Color.Black;
-            this.InputMember.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.InputMember.Location = new System.Drawing.Point(3, 0);
-            this.InputMember.Margin = new System.Windows.Forms.Padding(0, 0, 24, 0);
-            this.InputMember.Name = "InputMember";
-            this.InputMember.PasswordChar = '\0';
-            this.InputMember.PlaceholderForeColor = System.Drawing.Color.DimGray;
-            this.InputMember.PlaceholderText = "Input Member";
-            this.InputMember.SelectedText = "";
-            this.InputMember.ShadowDecoration.BorderRadius = 1;
-            this.InputMember.ShadowDecoration.Depth = 10;
-            this.InputMember.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.InputMember.Size = new System.Drawing.Size(624, 48);
-            this.InputMember.TabIndex = 6;
+            this.txtCari.BackColor = System.Drawing.Color.Transparent;
+            this.txtCari.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(35)))), ((int)(((byte)(60)))));
+            this.txtCari.BorderRadius = 12;
+            this.txtCari.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCari.DefaultText = "";
+            this.txtCari.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtCari.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtCari.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtCari.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtCari.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtCari.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtCari.ForeColor = System.Drawing.Color.Black;
+            this.txtCari.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtCari.Location = new System.Drawing.Point(3, 0);
+            this.txtCari.Margin = new System.Windows.Forms.Padding(0, 0, 24, 0);
+            this.txtCari.Name = "txtCari";
+            this.txtCari.PasswordChar = '\0';
+            this.txtCari.PlaceholderForeColor = System.Drawing.Color.DimGray;
+            this.txtCari.PlaceholderText = "Search Data";
+            this.txtCari.SelectedText = "";
+            this.txtCari.ShadowDecoration.BorderRadius = 1;
+            this.txtCari.ShadowDecoration.Depth = 10;
+            this.txtCari.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.txtCari.Size = new System.Drawing.Size(624, 48);
+            this.txtCari.TabIndex = 6;
+            this.txtCari.TextChanged += new System.EventHandler(this.txtCari_TextChanged);
             // 
             // panel1
             // 
@@ -336,6 +341,18 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Member";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(3, 16);
+            this.label2.Margin = new System.Windows.Forms.Padding(3, 16, 3, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(33, 23);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "No";
+            // 
             // Member
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -373,11 +390,12 @@
         private System.Windows.Forms.ListView listMember;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Panel panel2;
-        private Guna.UI2.WinForms.Guna2TextBox InputMember;
+        private Guna.UI2.WinForms.Guna2TextBox txtCari;
         private System.Windows.Forms.Panel panel1;
         private Guna.UI2.WinForms.Guna2Button btnDeleteMember;
         private Guna.UI2.WinForms.Guna2Button btnEditMember;
         private Guna.UI2.WinForms.Guna2Button btnAddMember;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }

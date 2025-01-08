@@ -38,6 +38,7 @@ namespace CashierFormApp.Model.Repository
                         while (reader.Read())
                         {
                             User user = new User();
+                            user.user_id = reader.GetInt32(0);
                             user.username = reader["username"].ToString();
                             user.password = reader["password"].ToString();
                             user.role_id = reader.GetInt32(3);

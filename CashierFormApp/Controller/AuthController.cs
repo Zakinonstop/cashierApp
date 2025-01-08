@@ -38,6 +38,7 @@ namespace CashierFormApp.Controller
 
                     Session.Username = data[0].username;
                     Session.RoleId = data[0].role_id;
+                    Session.UserId = data[0].user_id;
 
                     return (true, "Login successful");
                 }

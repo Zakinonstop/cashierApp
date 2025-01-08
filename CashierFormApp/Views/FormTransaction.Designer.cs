@@ -55,12 +55,14 @@
             this.guna2ShadowPanel4 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.listTransaction = new System.Windows.Forms.ListView();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.InputNIK = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ShadowPanel2 = new Guna.UI2.WinForms.Guna2ShadowPanel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.labelUsername = new System.Windows.Forms.Label();
+            this.labelRole = new System.Windows.Forms.Label();
             this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            this.InputNIK = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2ShadowPanel1.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
@@ -76,6 +78,8 @@
             this.guna2ShadowPanel4.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             this.guna2ShadowPanel2.SuspendLayout();
+            this.tableLayoutPanel10.SuspendLayout();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,10 +92,10 @@
             this.guna2ShadowPanel1.Location = new System.Drawing.Point(876, 200);
             this.guna2ShadowPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.guna2ShadowPanel1.Name = "guna2ShadowPanel1";
-            this.guna2ShadowPanel1.Padding = new System.Windows.Forms.Padding(20);
+            this.guna2ShadowPanel1.Padding = new System.Windows.Forms.Padding(20, 20, 20, 20);
             this.guna2ShadowPanel1.Radius = 6;
             this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.Black;
-            this.guna2ShadowPanel1.Size = new System.Drawing.Size(505, 841);
+            this.guna2ShadowPanel1.Size = new System.Drawing.Size(505, 644);
             this.guna2ShadowPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel5
@@ -113,7 +117,7 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 96F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(465, 801);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(465, 604);
             this.tableLayoutPanel5.TabIndex = 11;
             // 
             // tableLayoutPanel8
@@ -124,7 +128,7 @@
             this.tableLayoutPanel8.Controls.Add(this.guna2Button1, 1, 0);
             this.tableLayoutPanel8.Controls.Add(this.panel2, 0, 0);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 721);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 524);
             this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0, 16, 0, 16);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 1;
@@ -191,7 +195,7 @@
             // 
             // guna2Separator1
             // 
-            this.guna2Separator1.Location = new System.Drawing.Point(3, 586);
+            this.guna2Separator1.Location = new System.Drawing.Point(3, 389);
             this.guna2Separator1.Name = "guna2Separator1";
             this.guna2Separator1.Size = new System.Drawing.Size(459, 1);
             this.guna2Separator1.TabIndex = 9;
@@ -203,7 +207,7 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.Controls.Add(this.labelTax, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.label3, 0, 0);
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 463);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 266);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
@@ -244,7 +248,7 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel7.Controls.Add(this.label4, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.labelTotal, 1, 0);
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 585);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 388);
             this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
@@ -290,7 +294,7 @@
             this.listSumTransaction.Location = new System.Drawing.Point(0, 0);
             this.listSumTransaction.Margin = new System.Windows.Forms.Padding(0);
             this.listSumTransaction.Name = "listSumTransaction";
-            this.listSumTransaction.Size = new System.Drawing.Size(465, 463);
+            this.listSumTransaction.Size = new System.Drawing.Size(465, 266);
             this.listSumTransaction.TabIndex = 13;
             this.listSumTransaction.UseCompatibleStateImageBehavior = false;
             // 
@@ -300,10 +304,10 @@
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 505F));
+            this.tableLayoutPanel2.Controls.Add(this.guna2ShadowPanel2, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.guna2ShadowPanel1, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel1, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.guna2ShadowPanel2, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(24, 0);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
@@ -312,7 +316,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1381, 1041);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1381, 844);
             this.tableLayoutPanel2.TabIndex = 10;
             // 
             // panel1
@@ -368,7 +372,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 154F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(876, 841);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(876, 644);
             this.tableLayoutPanel1.TabIndex = 9;
             // 
             // tableLayoutPanel3
@@ -386,7 +390,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(856, 671);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(856, 474);
             this.tableLayoutPanel3.TabIndex = 10;
             // 
             // guna2ShadowPanel3
@@ -469,10 +473,10 @@
             this.guna2ShadowPanel4.Location = new System.Drawing.Point(0, 71);
             this.guna2ShadowPanel4.Margin = new System.Windows.Forms.Padding(0);
             this.guna2ShadowPanel4.Name = "guna2ShadowPanel4";
-            this.guna2ShadowPanel4.Padding = new System.Windows.Forms.Padding(24);
+            this.guna2ShadowPanel4.Padding = new System.Windows.Forms.Padding(24, 24, 24, 24);
             this.guna2ShadowPanel4.Radius = 6;
             this.guna2ShadowPanel4.ShadowColor = System.Drawing.Color.Black;
-            this.guna2ShadowPanel4.Size = new System.Drawing.Size(856, 600);
+            this.guna2ShadowPanel4.Size = new System.Drawing.Size(856, 403);
             this.guna2ShadowPanel4.TabIndex = 1;
             // 
             // listTransaction
@@ -483,9 +487,9 @@
             this.listTransaction.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listTransaction.HideSelection = false;
             this.listTransaction.Location = new System.Drawing.Point(24, 24);
-            this.listTransaction.Margin = new System.Windows.Forms.Padding(24);
+            this.listTransaction.Margin = new System.Windows.Forms.Padding(24, 24, 24, 24);
             this.listTransaction.Name = "listTransaction";
-            this.listTransaction.Size = new System.Drawing.Size(808, 552);
+            this.listTransaction.Size = new System.Drawing.Size(808, 355);
             this.listTransaction.TabIndex = 0;
             this.listTransaction.UseCompatibleStateImageBehavior = false;
             // 
@@ -497,87 +501,12 @@
             this.tableLayoutPanel9.Controls.Add(this.InputNIK, 0, 0);
             this.tableLayoutPanel9.Controls.Add(this.btnDelete, 1, 0);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 690);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 493);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 1;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel9.Size = new System.Drawing.Size(870, 148);
             this.tableLayoutPanel9.TabIndex = 11;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDelete.BorderRadius = 12;
-            this.btnDelete.BorderThickness = 1;
-            this.btnDelete.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnDelete.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnDelete.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnDelete.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnDelete.FillColor = System.Drawing.Color.Transparent;
-            this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Image = global::CashierFormApp.Properties.Resources.delete_24dp_000_FILL0_wght400_GRAD0_opsz24;
-            this.btnDelete.Location = new System.Drawing.Point(798, 0);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(0, 0, 24, 0);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(48, 48);
-            this.btnDelete.TabIndex = 8;
-            this.btnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
-            // 
-            // guna2ShadowPanel2
-            // 
-            this.guna2ShadowPanel2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ShadowPanel2.Controls.Add(this.label2);
-            this.guna2ShadowPanel2.Controls.Add(this.label1);
-            this.guna2ShadowPanel2.Controls.Add(this.guna2CirclePictureBox1);
-            this.guna2ShadowPanel2.FillColor = System.Drawing.Color.White;
-            this.guna2ShadowPanel2.Location = new System.Drawing.Point(876, 24);
-            this.guna2ShadowPanel2.Margin = new System.Windows.Forms.Padding(0, 24, 0, 24);
-            this.guna2ShadowPanel2.Name = "guna2ShadowPanel2";
-            this.guna2ShadowPanel2.Radius = 6;
-            this.guna2ShadowPanel2.ShadowColor = System.Drawing.Color.Black;
-            this.guna2ShadowPanel2.ShadowDepth = 0;
-            this.guna2ShadowPanel2.ShadowShift = 0;
-            this.guna2ShadowPanel2.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.Dropped;
-            this.guna2ShadowPanel2.Size = new System.Drawing.Size(500, 100);
-            this.guna2ShadowPanel2.TabIndex = 10;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(280, 52);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(108, 28);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "24.21.1582";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(172, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(216, 31);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Shabbah Athabiyyu";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // guna2CirclePictureBox1
-            // 
-            this.guna2CirclePictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.guna2CirclePictureBox1.Image = global::CashierFormApp.Properties.Resources.account_circle_24dp_EF233C_FILL0_wght400_GRAD0_opsz24;
-            this.guna2CirclePictureBox1.ImageRotate = 0F;
-            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(402, 10);
-            this.guna2CirclePictureBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
-            this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(80, 80);
-            this.guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2CirclePictureBox1.TabIndex = 0;
-            this.guna2CirclePictureBox1.TabStop = false;
             // 
             // InputNIK
             // 
@@ -607,13 +536,121 @@
             this.InputNIK.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.InputNIK.Size = new System.Drawing.Size(735, 48);
             this.InputNIK.TabIndex = 9;
+            this.InputNIK.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.InputNIK_KeyPress);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDelete.BorderRadius = 12;
+            this.btnDelete.BorderThickness = 1;
+            this.btnDelete.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnDelete.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnDelete.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnDelete.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnDelete.FillColor = System.Drawing.Color.Transparent;
+            this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnDelete.ForeColor = System.Drawing.Color.White;
+            this.btnDelete.Image = global::CashierFormApp.Properties.Resources.delete_24dp_000_FILL0_wght400_GRAD0_opsz24;
+            this.btnDelete.Location = new System.Drawing.Point(798, 0);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(0, 0, 24, 0);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(48, 48);
+            this.btnDelete.TabIndex = 8;
+            this.btnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
+            // 
+            // guna2ShadowPanel2
+            // 
+            this.guna2ShadowPanel2.AutoSize = true;
+            this.guna2ShadowPanel2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ShadowPanel2.Controls.Add(this.tableLayoutPanel10);
+            this.guna2ShadowPanel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2ShadowPanel2.FillColor = System.Drawing.Color.White;
+            this.guna2ShadowPanel2.Location = new System.Drawing.Point(879, 24);
+            this.guna2ShadowPanel2.Margin = new System.Windows.Forms.Padding(3, 24, 3, 3);
+            this.guna2ShadowPanel2.Name = "guna2ShadowPanel2";
+            this.guna2ShadowPanel2.Padding = new System.Windows.Forms.Padding(12);
+            this.guna2ShadowPanel2.Radius = 6;
+            this.guna2ShadowPanel2.ShadowColor = System.Drawing.Color.Black;
+            this.guna2ShadowPanel2.ShadowDepth = 20;
+            this.guna2ShadowPanel2.Size = new System.Drawing.Size(499, 89);
+            this.guna2ShadowPanel2.TabIndex = 10;
+            // 
+            // tableLayoutPanel10
+            // 
+            this.tableLayoutPanel10.AutoSize = true;
+            this.tableLayoutPanel10.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel10.ColumnCount = 2;
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel10.Controls.Add(this.panel3, 0, 0);
+            this.tableLayoutPanel10.Controls.Add(this.guna2CirclePictureBox1, 1, 0);
+            this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(12, 12);
+            this.tableLayoutPanel10.Name = "tableLayoutPanel10";
+            this.tableLayoutPanel10.RowCount = 1;
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(475, 65);
+            this.tableLayoutPanel10.TabIndex = 3;
+            // 
+            // panel3
+            // 
+            this.panel3.AutoSize = true;
+            this.panel3.Controls.Add(this.labelUsername);
+            this.panel3.Controls.Add(this.labelRole);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(3, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(409, 59);
+            this.panel3.TabIndex = 0;
+            // 
+            // labelUsername
+            // 
+            this.labelUsername.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelUsername.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelUsername.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelUsername.Location = new System.Drawing.Point(0, 0);
+            this.labelUsername.Name = "labelUsername";
+            this.labelUsername.Size = new System.Drawing.Size(409, 31);
+            this.labelUsername.TabIndex = 1;
+            this.labelUsername.Text = "Shabbah Athabiyyu";
+            this.labelUsername.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelUsername.Click += new System.EventHandler(this.logout_click);
+            // 
+            // labelRole
+            // 
+            this.labelRole.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.labelRole.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRole.Location = new System.Drawing.Point(0, 31);
+            this.labelRole.Margin = new System.Windows.Forms.Padding(0);
+            this.labelRole.Name = "labelRole";
+            this.labelRole.Size = new System.Drawing.Size(409, 28);
+            this.labelRole.TabIndex = 2;
+            this.labelRole.Text = "24.21.1582";
+            this.labelRole.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelRole.Click += new System.EventHandler(this.logout_click);
+            // 
+            // guna2CirclePictureBox1
+            // 
+            this.guna2CirclePictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2CirclePictureBox1.FillColor = System.Drawing.Color.Transparent;
+            this.guna2CirclePictureBox1.Image = global::CashierFormApp.Properties.Resources.account_circle_24dp_EF233C_FILL0_wght400_GRAD0_opsz24;
+            this.guna2CirclePictureBox1.ImageRotate = 0F;
+            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(415, 0);
+            this.guna2CirclePictureBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
+            this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(60, 65);
+            this.guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2CirclePictureBox1.TabIndex = 0;
+            this.guna2CirclePictureBox1.TabStop = false;
             // 
             // FormTransaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
-            this.ClientSize = new System.Drawing.Size(1429, 1041);
+            this.ClientSize = new System.Drawing.Size(1429, 844);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Name = "FormTransaction";
             this.Padding = new System.Windows.Forms.Padding(24, 0, 24, 0);
@@ -641,6 +678,9 @@
             this.tableLayoutPanel9.ResumeLayout(false);
             this.guna2ShadowPanel2.ResumeLayout(false);
             this.guna2ShadowPanel2.PerformLayout();
+            this.tableLayoutPanel10.ResumeLayout(false);
+            this.tableLayoutPanel10.PerformLayout();
+            this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -675,10 +715,12 @@
         private System.Windows.Forms.ListView listSumTransaction;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
         private Guna.UI2.WinForms.Guna2Button btnDelete;
-        private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
         private Guna.UI2.WinForms.Guna2TextBox InputNIK;
+        private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label labelUsername;
+        private System.Windows.Forms.Label labelRole;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
     }
 }
