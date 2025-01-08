@@ -184,6 +184,7 @@ namespace CashierFormApp.Model.Repository
                             MemberEntity member = new MemberEntity();
                             member.MemberId = Convert.ToInt32(dtr["member_id"]);
                             member.Name = dtr["name"].ToString();
+                            member.Address = dtr["address"].ToString();
                             member.Nik = dtr["nik"].ToString();
                             member.Shopping = Convert.ToInt32(dtr["shopping"]);
 
