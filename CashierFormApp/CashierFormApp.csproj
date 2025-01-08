@@ -194,7 +194,9 @@
     <Compile Include="Views\FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FormTransaction.cs" />
+    <Compile Include="Views\FormTransaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Views\FormTransaction.Designer.cs">
       <DependentUpon>FormTransaction.cs</DependentUpon>
     </Compile>

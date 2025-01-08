@@ -58,8 +58,10 @@
             this.InputNIK = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ShadowPanel2 = new Guna.UI2.WinForms.Guna2ShadowPanel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.labelUsername = new System.Windows.Forms.Label();
+            this.labelRole = new System.Windows.Forms.Label();
             this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.guna2ShadowPanel1.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -76,6 +78,8 @@
             this.guna2ShadowPanel4.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             this.guna2ShadowPanel2.SuspendLayout();
+            this.tableLayoutPanel10.SuspendLayout();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,13 +89,13 @@
             this.guna2ShadowPanel1.Controls.Add(this.tableLayoutPanel5);
             this.guna2ShadowPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2ShadowPanel1.FillColor = System.Drawing.Color.White;
-            this.guna2ShadowPanel1.Location = new System.Drawing.Point(986, 250);
+            this.guna2ShadowPanel1.Location = new System.Drawing.Point(876, 200);
             this.guna2ShadowPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.guna2ShadowPanel1.Name = "guna2ShadowPanel1";
-            this.guna2ShadowPanel1.Padding = new System.Windows.Forms.Padding(22, 25, 22, 25);
+            this.guna2ShadowPanel1.Padding = new System.Windows.Forms.Padding(20, 20, 20, 20);
             this.guna2ShadowPanel1.Radius = 6;
             this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.Black;
-            this.guna2ShadowPanel1.Size = new System.Drawing.Size(568, 1051);
+            this.guna2ShadowPanel1.Size = new System.Drawing.Size(505, 644);
             this.guna2ShadowPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel5
@@ -104,33 +108,32 @@
             this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel7, 0, 3);
             this.tableLayoutPanel5.Controls.Add(this.listSumTransaction, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(22, 25);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(20, 20);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 5;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 2F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(524, 1001);
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 2F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 96F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(465, 604);
             this.tableLayoutPanel5.TabIndex = 11;
             // 
             // tableLayoutPanel8
             // 
             this.tableLayoutPanel8.ColumnCount = 2;
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel8.Controls.Add(this.guna2Button1, 1, 0);
             this.tableLayoutPanel8.Controls.Add(this.panel2, 0, 0);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 901);
-            this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0, 20, 0, 20);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 524);
+            this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0, 16, 0, 16);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(524, 80);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(465, 64);
             this.tableLayoutPanel8.TabIndex = 12;
             // 
             // guna2Button1
@@ -143,10 +146,9 @@
             this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(35)))), ((int)(((byte)(60)))));
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(392, 4);
-            this.guna2Button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.guna2Button1.Location = new System.Drawing.Point(348, 3);
             this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(112, 72);
+            this.guna2Button1.Size = new System.Drawing.Size(100, 58);
             this.guna2Button1.TabIndex = 7;
             this.guna2Button1.Text = "Pay";
             this.guna2Button1.Click += new System.EventHandler(this.BtnPay_Click);
@@ -155,10 +157,9 @@
             // 
             this.panel2.Controls.Add(this.InputPay);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 4);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(383, 72);
+            this.panel2.Size = new System.Drawing.Size(339, 58);
             this.panel2.TabIndex = 8;
             // 
             // InputPay
@@ -180,7 +181,7 @@
             this.InputPay.ForeColor = System.Drawing.Color.Black;
             this.InputPay.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.InputPay.Location = new System.Drawing.Point(0, 0);
-            this.InputPay.Margin = new System.Windows.Forms.Padding(3, 138, 22, 5);
+            this.InputPay.Margin = new System.Windows.Forms.Padding(3, 110, 20, 4);
             this.InputPay.Name = "InputPay";
             this.InputPay.PasswordChar = '\0';
             this.InputPay.PlaceholderForeColor = System.Drawing.Color.DimGray;
@@ -189,30 +190,29 @@
             this.InputPay.ShadowDecoration.BorderRadius = 1;
             this.InputPay.ShadowDecoration.Depth = 10;
             this.InputPay.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.InputPay.Size = new System.Drawing.Size(383, 72);
+            this.InputPay.Size = new System.Drawing.Size(339, 58);
             this.InputPay.TabIndex = 8;
             // 
             // guna2Separator1
             // 
-            this.guna2Separator1.Location = new System.Drawing.Point(3, 733);
-            this.guna2Separator1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.guna2Separator1.Location = new System.Drawing.Point(3, 389);
             this.guna2Separator1.Name = "guna2Separator1";
-            this.guna2Separator1.Size = new System.Drawing.Size(516, 1);
+            this.guna2Separator1.Size = new System.Drawing.Size(459, 1);
             this.guna2Separator1.TabIndex = 9;
             // 
             // tableLayoutPanel6
             // 
             this.tableLayoutPanel6.ColumnCount = 2;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 112F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.Controls.Add(this.labelTax, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.label3, 0, 0);
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 579);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 266);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(523, 150);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(465, 120);
             this.tableLayoutPanel6.TabIndex = 11;
             // 
             // labelTax
@@ -220,10 +220,10 @@
             this.labelTax.AutoSize = true;
             this.labelTax.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.labelTax.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTax.Location = new System.Drawing.Point(115, 100);
-            this.labelTax.Margin = new System.Windows.Forms.Padding(3, 20, 3, 20);
+            this.labelTax.Location = new System.Drawing.Point(103, 81);
+            this.labelTax.Margin = new System.Windows.Forms.Padding(3, 16, 3, 16);
             this.labelTax.Name = "labelTax";
-            this.labelTax.Size = new System.Drawing.Size(405, 30);
+            this.labelTax.Size = new System.Drawing.Size(359, 23);
             this.labelTax.TabIndex = 11;
             this.labelTax.Text = "Rp. 0";
             this.labelTax.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -233,10 +233,10 @@
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(3, 100);
-            this.label3.Margin = new System.Windows.Forms.Padding(3, 20, 3, 20);
+            this.label3.Location = new System.Drawing.Point(3, 81);
+            this.label3.Margin = new System.Windows.Forms.Padding(3, 16, 3, 16);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(106, 30);
+            this.label3.Size = new System.Drawing.Size(94, 23);
             this.label3.TabIndex = 10;
             this.label3.Text = "Tax (12%)";
             this.label3.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -244,16 +244,16 @@
             // tableLayoutPanel7
             // 
             this.tableLayoutPanel7.ColumnCount = 2;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 112F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel7.Controls.Add(this.label4, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.labelTotal, 1, 0);
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 731);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 388);
             this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(523, 150);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(465, 120);
             this.tableLayoutPanel7.TabIndex = 12;
             // 
             // label4
@@ -262,10 +262,10 @@
             this.label4.Dock = System.Windows.Forms.DockStyle.Top;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.label4.Location = new System.Drawing.Point(3, 20);
-            this.label4.Margin = new System.Windows.Forms.Padding(3, 20, 3, 20);
+            this.label4.Location = new System.Drawing.Point(3, 16);
+            this.label4.Margin = new System.Windows.Forms.Padding(3, 16, 3, 16);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(106, 45);
+            this.label4.Size = new System.Drawing.Size(94, 38);
             this.label4.TabIndex = 10;
             this.label4.Text = "Total";
             // 
@@ -275,10 +275,10 @@
             this.labelTotal.Dock = System.Windows.Forms.DockStyle.Top;
             this.labelTotal.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTotal.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.labelTotal.Location = new System.Drawing.Point(115, 20);
-            this.labelTotal.Margin = new System.Windows.Forms.Padding(3, 20, 3, 20);
+            this.labelTotal.Location = new System.Drawing.Point(103, 16);
+            this.labelTotal.Margin = new System.Windows.Forms.Padding(3, 16, 3, 16);
             this.labelTotal.Name = "labelTotal";
-            this.labelTotal.Size = new System.Drawing.Size(405, 81);
+            this.labelTotal.Size = new System.Drawing.Size(359, 67);
             this.labelTotal.TabIndex = 10;
             this.labelTotal.Text = "Rp. 0";
             this.labelTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -294,7 +294,7 @@
             this.listSumTransaction.Location = new System.Drawing.Point(0, 0);
             this.listSumTransaction.Margin = new System.Windows.Forms.Padding(0);
             this.listSumTransaction.Name = "listSumTransaction";
-            this.listSumTransaction.Size = new System.Drawing.Size(524, 579);
+            this.listSumTransaction.Size = new System.Drawing.Size(465, 266);
             this.listSumTransaction.TabIndex = 13;
             this.listSumTransaction.UseCompatibleStateImageBehavior = false;
             // 
@@ -303,20 +303,20 @@
             this.tableLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 568F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 505F));
+            this.tableLayoutPanel2.Controls.Add(this.guna2ShadowPanel2, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.guna2ShadowPanel1, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel1, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.guna2ShadowPanel2, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(27, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(24, 0);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 250F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1554, 1301);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1381, 844);
             this.tableLayoutPanel2.TabIndex = 10;
             // 
             // panel1
@@ -324,10 +324,10 @@
             this.panel1.AutoSize = true;
             this.panel1.Controls.Add(this.InputCode);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 163);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 20);
+            this.panel1.Location = new System.Drawing.Point(0, 130);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 16);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(986, 67);
+            this.panel1.Size = new System.Drawing.Size(876, 54);
             this.panel1.TabIndex = 8;
             // 
             // InputCode
@@ -346,7 +346,7 @@
             this.InputCode.ForeColor = System.Drawing.Color.Black;
             this.InputCode.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.InputCode.Location = new System.Drawing.Point(0, 2);
-            this.InputCode.Margin = new System.Windows.Forms.Padding(3, 138, 22, 5);
+            this.InputCode.Margin = new System.Windows.Forms.Padding(3, 110, 20, 4);
             this.InputCode.Name = "InputCode";
             this.InputCode.PasswordChar = '\0';
             this.InputCode.PlaceholderForeColor = System.Drawing.Color.DimGray;
@@ -355,7 +355,7 @@
             this.InputCode.ShadowDecoration.BorderRadius = 1;
             this.InputCode.ShadowDecoration.Depth = 10;
             this.InputCode.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.InputCode.Size = new System.Drawing.Size(702, 60);
+            this.InputCode.Size = new System.Drawing.Size(624, 48);
             this.InputCode.TabIndex = 6;
             this.InputCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.InputCode_KeyPress);
             // 
@@ -366,31 +366,31 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel9, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 250);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 200);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 192F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(986, 1051);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 154F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(876, 644);
             this.tableLayoutPanel1.TabIndex = 9;
             // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 22F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.Controls.Add(this.guna2ShadowPanel3, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.guna2ShadowPanel4, 0, 2);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0, 0, 22, 20);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0, 0, 20, 16);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 69F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(964, 839);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(856, 474);
             this.tableLayoutPanel3.TabIndex = 10;
             // 
             // guna2ShadowPanel3
@@ -403,28 +403,27 @@
             this.guna2ShadowPanel3.Location = new System.Drawing.Point(0, 0);
             this.guna2ShadowPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.guna2ShadowPanel3.Name = "guna2ShadowPanel3";
-            this.guna2ShadowPanel3.Padding = new System.Windows.Forms.Padding(27, 0, 27, 0);
+            this.guna2ShadowPanel3.Padding = new System.Windows.Forms.Padding(24, 0, 24, 0);
             this.guna2ShadowPanel3.Radius = 6;
             this.guna2ShadowPanel3.ShadowColor = System.Drawing.Color.Black;
-            this.guna2ShadowPanel3.Size = new System.Drawing.Size(964, 69);
+            this.guna2ShadowPanel3.Size = new System.Drawing.Size(856, 55);
             this.guna2ShadowPanel3.TabIndex = 0;
             // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 3;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 248F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 220F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
             this.tableLayoutPanel4.Controls.Add(this.label7, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.label6, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.label8, 2, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(27, 0);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(24, 0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(910, 69);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(808, 55);
             this.tableLayoutPanel4.TabIndex = 12;
             // 
             // label7
@@ -432,10 +431,10 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(3, 20);
-            this.label7.Margin = new System.Windows.Forms.Padding(3, 20, 3, 20);
+            this.label7.Location = new System.Drawing.Point(3, 16);
+            this.label7.Margin = new System.Windows.Forms.Padding(3, 16, 3, 16);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(63, 29);
+            this.label7.Size = new System.Drawing.Size(50, 23);
             this.label7.TabIndex = 10;
             this.label7.Text = "Code";
             // 
@@ -444,10 +443,10 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(251, 20);
-            this.label6.Margin = new System.Windows.Forms.Padding(3, 20, 3, 20);
+            this.label6.Location = new System.Drawing.Point(223, 16);
+            this.label6.Margin = new System.Windows.Forms.Padding(3, 16, 3, 16);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(89, 29);
+            this.label6.Size = new System.Drawing.Size(70, 23);
             this.label6.TabIndex = 10;
             this.label6.Text = "Product";
             // 
@@ -457,10 +456,10 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(733, 20);
-            this.label8.Margin = new System.Windows.Forms.Padding(3, 20, 3, 20);
+            this.label8.Location = new System.Drawing.Point(651, 16);
+            this.label8.Margin = new System.Windows.Forms.Padding(3, 16, 3, 16);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(174, 29);
+            this.label8.Size = new System.Drawing.Size(154, 23);
             this.label8.TabIndex = 10;
             this.label8.Text = "Price";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -471,13 +470,13 @@
             this.guna2ShadowPanel4.Controls.Add(this.listTransaction);
             this.guna2ShadowPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2ShadowPanel4.FillColor = System.Drawing.Color.White;
-            this.guna2ShadowPanel4.Location = new System.Drawing.Point(0, 89);
+            this.guna2ShadowPanel4.Location = new System.Drawing.Point(0, 71);
             this.guna2ShadowPanel4.Margin = new System.Windows.Forms.Padding(0);
             this.guna2ShadowPanel4.Name = "guna2ShadowPanel4";
-            this.guna2ShadowPanel4.Padding = new System.Windows.Forms.Padding(27, 30, 27, 30);
+            this.guna2ShadowPanel4.Padding = new System.Windows.Forms.Padding(24, 24, 24, 24);
             this.guna2ShadowPanel4.Radius = 6;
             this.guna2ShadowPanel4.ShadowColor = System.Drawing.Color.Black;
-            this.guna2ShadowPanel4.Size = new System.Drawing.Size(964, 750);
+            this.guna2ShadowPanel4.Size = new System.Drawing.Size(856, 403);
             this.guna2ShadowPanel4.TabIndex = 1;
             // 
             // listTransaction
@@ -487,10 +486,10 @@
             this.listTransaction.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listTransaction.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listTransaction.HideSelection = false;
-            this.listTransaction.Location = new System.Drawing.Point(27, 30);
-            this.listTransaction.Margin = new System.Windows.Forms.Padding(27, 30, 27, 30);
+            this.listTransaction.Location = new System.Drawing.Point(24, 24);
+            this.listTransaction.Margin = new System.Windows.Forms.Padding(24, 24, 24, 24);
             this.listTransaction.Name = "listTransaction";
-            this.listTransaction.Size = new System.Drawing.Size(910, 690);
+            this.listTransaction.Size = new System.Drawing.Size(808, 355);
             this.listTransaction.TabIndex = 0;
             this.listTransaction.UseCompatibleStateImageBehavior = false;
             // 
@@ -502,12 +501,11 @@
             this.tableLayoutPanel9.Controls.Add(this.InputNIK, 0, 0);
             this.tableLayoutPanel9.Controls.Add(this.btnDelete, 1, 0);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 863);
-            this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 493);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 1;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(980, 184);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(870, 148);
             this.tableLayoutPanel9.TabIndex = 11;
             // 
             // InputNIK
@@ -536,7 +534,7 @@
             this.InputNIK.ShadowDecoration.BorderRadius = 1;
             this.InputNIK.ShadowDecoration.Depth = 10;
             this.InputNIK.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.InputNIK.Size = new System.Drawing.Size(827, 60);
+            this.InputNIK.Size = new System.Drawing.Size(735, 48);
             this.InputNIK.TabIndex = 9;
             this.InputNIK.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.InputNIK_KeyPress);
             // 
@@ -553,79 +551,109 @@
             this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnDelete.ForeColor = System.Drawing.Color.White;
             this.btnDelete.Image = global::CashierFormApp.Properties.Resources.delete_24dp_000_FILL0_wght400_GRAD0_opsz24;
-            this.btnDelete.Location = new System.Drawing.Point(899, 0);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(0, 0, 27, 0);
+            this.btnDelete.Location = new System.Drawing.Point(798, 0);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(0, 0, 24, 0);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(54, 60);
+            this.btnDelete.Size = new System.Drawing.Size(48, 48);
             this.btnDelete.TabIndex = 8;
             this.btnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
             // guna2ShadowPanel2
             // 
+            this.guna2ShadowPanel2.AutoSize = true;
             this.guna2ShadowPanel2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ShadowPanel2.Controls.Add(this.label2);
-            this.guna2ShadowPanel2.Controls.Add(this.label1);
-            this.guna2ShadowPanel2.Controls.Add(this.guna2CirclePictureBox1);
+            this.guna2ShadowPanel2.Controls.Add(this.tableLayoutPanel10);
+            this.guna2ShadowPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2ShadowPanel2.FillColor = System.Drawing.Color.White;
-            this.guna2ShadowPanel2.Location = new System.Drawing.Point(986, 30);
-            this.guna2ShadowPanel2.Margin = new System.Windows.Forms.Padding(0, 30, 0, 30);
+            this.guna2ShadowPanel2.Location = new System.Drawing.Point(879, 24);
+            this.guna2ShadowPanel2.Margin = new System.Windows.Forms.Padding(3, 24, 3, 3);
             this.guna2ShadowPanel2.Name = "guna2ShadowPanel2";
+            this.guna2ShadowPanel2.Padding = new System.Windows.Forms.Padding(12);
             this.guna2ShadowPanel2.Radius = 6;
             this.guna2ShadowPanel2.ShadowColor = System.Drawing.Color.Black;
-            this.guna2ShadowPanel2.ShadowDepth = 0;
-            this.guna2ShadowPanel2.ShadowShift = 0;
-            this.guna2ShadowPanel2.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.Dropped;
-            this.guna2ShadowPanel2.Size = new System.Drawing.Size(562, 125);
+            this.guna2ShadowPanel2.ShadowDepth = 20;
+            this.guna2ShadowPanel2.Size = new System.Drawing.Size(499, 89);
             this.guna2ShadowPanel2.TabIndex = 10;
-            this.guna2ShadowPanel2.Click += new System.EventHandler(this.logout_click);
             // 
-            // label2
+            // tableLayoutPanel10
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(315, 65);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(128, 32);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "24.21.1582";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tableLayoutPanel10.AutoSize = true;
+            this.tableLayoutPanel10.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel10.ColumnCount = 2;
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel10.Controls.Add(this.panel3, 0, 0);
+            this.tableLayoutPanel10.Controls.Add(this.guna2CirclePictureBox1, 1, 0);
+            this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(12, 12);
+            this.tableLayoutPanel10.Name = "tableLayoutPanel10";
+            this.tableLayoutPanel10.RowCount = 1;
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(475, 65);
+            this.tableLayoutPanel10.TabIndex = 3;
             // 
-            // label1
+            // panel3
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(194, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(264, 38);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Shabbah Athabiyyu";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.panel3.AutoSize = true;
+            this.panel3.Controls.Add(this.labelUsername);
+            this.panel3.Controls.Add(this.labelRole);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(3, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(409, 59);
+            this.panel3.TabIndex = 0;
+            // 
+            // labelUsername
+            // 
+            this.labelUsername.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelUsername.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelUsername.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelUsername.Location = new System.Drawing.Point(0, 0);
+            this.labelUsername.Name = "labelUsername";
+            this.labelUsername.Size = new System.Drawing.Size(409, 31);
+            this.labelUsername.TabIndex = 1;
+            this.labelUsername.Text = "Shabbah Athabiyyu";
+            this.labelUsername.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelUsername.Click += new System.EventHandler(this.logout_click);
+            // 
+            // labelRole
+            // 
+            this.labelRole.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.labelRole.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRole.Location = new System.Drawing.Point(0, 31);
+            this.labelRole.Margin = new System.Windows.Forms.Padding(0);
+            this.labelRole.Name = "labelRole";
+            this.labelRole.Size = new System.Drawing.Size(409, 28);
+            this.labelRole.TabIndex = 2;
+            this.labelRole.Text = "24.21.1582";
+            this.labelRole.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelRole.Click += new System.EventHandler(this.logout_click);
             // 
             // guna2CirclePictureBox1
             // 
             this.guna2CirclePictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2CirclePictureBox1.FillColor = System.Drawing.Color.Transparent;
             this.guna2CirclePictureBox1.Image = global::CashierFormApp.Properties.Resources.account_circle_24dp_EF233C_FILL0_wght400_GRAD0_opsz24;
             this.guna2CirclePictureBox1.ImageRotate = 0F;
-            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(452, 12);
+            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(415, 0);
             this.guna2CirclePictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
             this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(90, 100);
+            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(60, 65);
             this.guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2CirclePictureBox1.TabIndex = 0;
             this.guna2CirclePictureBox1.TabStop = false;
             // 
             // FormTransaction
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
-            this.ClientSize = new System.Drawing.Size(1608, 1301);
+            this.ClientSize = new System.Drawing.Size(1429, 844);
             this.Controls.Add(this.tableLayoutPanel2);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormTransaction";
-            this.Padding = new System.Windows.Forms.Padding(27, 0, 27, 0);
+            this.Padding = new System.Windows.Forms.Padding(24, 0, 24, 0);
             this.Text = "FormTransaction";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.guna2ShadowPanel1.ResumeLayout(false);
@@ -650,6 +678,9 @@
             this.tableLayoutPanel9.ResumeLayout(false);
             this.guna2ShadowPanel2.ResumeLayout(false);
             this.guna2ShadowPanel2.PerformLayout();
+            this.tableLayoutPanel10.ResumeLayout(false);
+            this.tableLayoutPanel10.PerformLayout();
+            this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -684,10 +715,12 @@
         private System.Windows.Forms.ListView listSumTransaction;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
         private Guna.UI2.WinForms.Guna2Button btnDelete;
-        private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
         private Guna.UI2.WinForms.Guna2TextBox InputNIK;
+        private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label labelUsername;
+        private System.Windows.Forms.Label labelRole;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
     }
 }

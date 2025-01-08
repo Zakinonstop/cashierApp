@@ -14,21 +14,21 @@ using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 namespace CashierFormApp.Views
 {
-    public class ProductTransaction
-    {
-        public string ProductCode { get; set; }
-        public string ProductName { get; set; }
-        public int Price { get; set; }
-        public int Quantity { get; set; }
+    //public class ProductTransaction
+    //{
+    //    public string ProductCode { get; set; }
+    //    public string ProductName { get; set; }
+    //    public int Price { get; set; }
+    //    public int Quantity { get; set; }
 
-        public ProductTransaction(string productCode, string productName, int price)
-        {
-            ProductCode = productCode;
-            ProductName = productName;
-            Price = price;
-            Quantity = 1;
-        }
-    }
+    //    public ProductTransaction(string productCode, string productName, int price)
+    //    {
+    //        ProductCode = productCode;
+    //        ProductName = productName;
+    //        Price = price;
+    //        Quantity = 1;
+    //    }
+    //}
 
     public partial class FormTransaction : Form
     {
@@ -81,6 +81,11 @@ namespace CashierFormApp.Views
             listSumTransaction.Columns.Add("Total Price", 100, HorizontalAlignment.Right);
 
             listSumTransaction.Resize += (s, e) => AdjustColumnWidths();
+
+            var Session = SessionController.Instance;
+
+            labelUsername.Text = Session.Username;
+            labelRole.Text = Session.Username;
         }
 
         private void AdjustColumnWidths()
