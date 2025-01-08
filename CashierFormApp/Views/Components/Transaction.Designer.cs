@@ -41,8 +41,9 @@
             this.listTansactionLog = new System.Windows.Forms.ListView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.InputCode = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtCari = new Guna.UI2.WinForms.Guna2TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.guna2ShadowPanel3.SuspendLayout();
@@ -105,17 +106,19 @@
             // 
             // tableLayoutPanel4
             // 
-            this.tableLayoutPanel4.ColumnCount = 5;
+            this.tableLayoutPanel4.ColumnCount = 6;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 240F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 240F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 240F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 240F));
-            this.tableLayoutPanel4.Controls.Add(this.label7, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.label6, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.label8, 3, 0);
-            this.tableLayoutPanel4.Controls.Add(this.label1, 2, 0);
-            this.tableLayoutPanel4.Controls.Add(this.label2, 4, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label4, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label7, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label6, 2, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label8, 4, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label1, 3, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label2, 5, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(24, 0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -129,7 +132,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(3, 16);
+            this.label7.Location = new System.Drawing.Point(53, 16);
             this.label7.Margin = new System.Windows.Forms.Padding(3, 16, 3, 16);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(46, 23);
@@ -141,7 +144,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(243, 16);
+            this.label6.Location = new System.Drawing.Point(293, 16);
             this.label6.Margin = new System.Windows.Forms.Padding(3, 16, 3, 16);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(66, 23);
@@ -195,7 +198,7 @@
             this.guna2ShadowPanel4.Location = new System.Drawing.Point(0, 71);
             this.guna2ShadowPanel4.Margin = new System.Windows.Forms.Padding(0);
             this.guna2ShadowPanel4.Name = "guna2ShadowPanel4";
-            this.guna2ShadowPanel4.Padding = new System.Windows.Forms.Padding(24);
+            this.guna2ShadowPanel4.Padding = new System.Windows.Forms.Padding(24, 24, 24, 24);
             this.guna2ShadowPanel4.Radius = 6;
             this.guna2ShadowPanel4.ShadowColor = System.Drawing.Color.Black;
             this.guna2ShadowPanel4.Size = new System.Drawing.Size(1370, 505);
@@ -209,7 +212,7 @@
             this.listTansactionLog.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listTansactionLog.HideSelection = false;
             this.listTansactionLog.Location = new System.Drawing.Point(24, 24);
-            this.listTansactionLog.Margin = new System.Windows.Forms.Padding(24);
+            this.listTansactionLog.Margin = new System.Windows.Forms.Padding(24, 24, 24, 24);
             this.listTansactionLog.Name = "listTansactionLog";
             this.listTansactionLog.Size = new System.Drawing.Size(1322, 457);
             this.listTansactionLog.TabIndex = 0;
@@ -233,40 +236,41 @@
             // panel2
             // 
             this.panel2.AutoSize = true;
-            this.panel2.Controls.Add(this.InputCode);
+            this.panel2.Controls.Add(this.txtCari);
             this.panel2.Location = new System.Drawing.Point(24, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(24, 0, 0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(627, 48);
             this.panel2.TabIndex = 9;
             // 
-            // InputCode
+            // txtCari
             // 
-            this.InputCode.BackColor = System.Drawing.Color.Transparent;
-            this.InputCode.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(35)))), ((int)(((byte)(60)))));
-            this.InputCode.BorderRadius = 12;
-            this.InputCode.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.InputCode.DefaultText = "";
-            this.InputCode.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.InputCode.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.InputCode.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.InputCode.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.InputCode.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.InputCode.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.InputCode.ForeColor = System.Drawing.Color.Black;
-            this.InputCode.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.InputCode.Location = new System.Drawing.Point(3, 0);
-            this.InputCode.Margin = new System.Windows.Forms.Padding(0);
-            this.InputCode.Name = "InputCode";
-            this.InputCode.PasswordChar = '\0';
-            this.InputCode.PlaceholderForeColor = System.Drawing.Color.DimGray;
-            this.InputCode.PlaceholderText = "Search";
-            this.InputCode.SelectedText = "";
-            this.InputCode.ShadowDecoration.BorderRadius = 1;
-            this.InputCode.ShadowDecoration.Depth = 10;
-            this.InputCode.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.InputCode.Size = new System.Drawing.Size(624, 48);
-            this.InputCode.TabIndex = 6;
+            this.txtCari.BackColor = System.Drawing.Color.Transparent;
+            this.txtCari.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(35)))), ((int)(((byte)(60)))));
+            this.txtCari.BorderRadius = 12;
+            this.txtCari.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCari.DefaultText = "";
+            this.txtCari.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtCari.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtCari.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtCari.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtCari.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtCari.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtCari.ForeColor = System.Drawing.Color.Black;
+            this.txtCari.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtCari.Location = new System.Drawing.Point(3, 0);
+            this.txtCari.Margin = new System.Windows.Forms.Padding(0);
+            this.txtCari.Name = "txtCari";
+            this.txtCari.PasswordChar = '\0';
+            this.txtCari.PlaceholderForeColor = System.Drawing.Color.DimGray;
+            this.txtCari.PlaceholderText = "Search";
+            this.txtCari.SelectedText = "";
+            this.txtCari.ShadowDecoration.BorderRadius = 1;
+            this.txtCari.ShadowDecoration.Depth = 10;
+            this.txtCari.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.txtCari.Size = new System.Drawing.Size(624, 48);
+            this.txtCari.TabIndex = 6;
+            this.txtCari.TextChanged += new System.EventHandler(this.txtCari_TextChanged);
             // 
             // label3
             // 
@@ -278,6 +282,18 @@
             this.label3.Size = new System.Drawing.Size(319, 54);
             this.label3.TabIndex = 2;
             this.label3.Text = "Transaction Log";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(3, 16);
+            this.label4.Margin = new System.Windows.Forms.Padding(3, 16, 3, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(33, 23);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "No";
             // 
             // Transaction
             // 
@@ -315,8 +331,9 @@
         private System.Windows.Forms.ListView listTansactionLog;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Panel panel2;
-        private Guna.UI2.WinForms.Guna2TextBox InputCode;
+        private Guna.UI2.WinForms.Guna2TextBox txtCari;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
     }
 }

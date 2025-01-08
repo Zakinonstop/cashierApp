@@ -36,16 +36,17 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.guna2ShadowPanel4 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.listProduct = new System.Windows.Forms.ListView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.InputProduct = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtCari = new Guna.UI2.WinForms.Guna2TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
             this.btnDeleteProduct = new Guna.UI2.WinForms.Guna2Button();
             this.btnEditProduct = new Guna.UI2.WinForms.Guna2Button();
             this.btnAddProduct = new Guna.UI2.WinForms.Guna2Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.guna2ShadowPanel3.SuspendLayout();
@@ -109,15 +110,17 @@
             // 
             // tableLayoutPanel4
             // 
-            this.tableLayoutPanel4.ColumnCount = 4;
+            this.tableLayoutPanel4.ColumnCount = 5;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 220F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
-            this.tableLayoutPanel4.Controls.Add(this.label7, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.label6, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.label8, 3, 0);
-            this.tableLayoutPanel4.Controls.Add(this.label1, 2, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label7, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label6, 2, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label8, 4, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label1, 3, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(24, 0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -131,7 +134,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(3, 16);
+            this.label7.Location = new System.Drawing.Point(53, 16);
             this.label7.Margin = new System.Windows.Forms.Padding(3, 16, 3, 16);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(50, 23);
@@ -143,7 +146,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(223, 16);
+            this.label6.Location = new System.Drawing.Point(273, 16);
             this.label6.Margin = new System.Windows.Forms.Padding(3, 16, 3, 16);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(70, 23);
@@ -176,6 +179,18 @@
             this.label1.TabIndex = 10;
             this.label1.Text = "Stock";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(3, 16);
+            this.label2.Margin = new System.Windows.Forms.Padding(3, 16, 3, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(33, 23);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "No";
+            // 
             // guna2ShadowPanel4
             // 
             this.guna2ShadowPanel4.BackColor = System.Drawing.Color.Transparent;
@@ -185,7 +200,7 @@
             this.guna2ShadowPanel4.Location = new System.Drawing.Point(0, 71);
             this.guna2ShadowPanel4.Margin = new System.Windows.Forms.Padding(0);
             this.guna2ShadowPanel4.Name = "guna2ShadowPanel4";
-            this.guna2ShadowPanel4.Padding = new System.Windows.Forms.Padding(24);
+            this.guna2ShadowPanel4.Padding = new System.Windows.Forms.Padding(24, 24, 24, 24);
             this.guna2ShadowPanel4.Radius = 6;
             this.guna2ShadowPanel4.ShadowColor = System.Drawing.Color.Black;
             this.guna2ShadowPanel4.Size = new System.Drawing.Size(1380, 408);
@@ -199,11 +214,12 @@
             this.listProduct.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listProduct.HideSelection = false;
             this.listProduct.Location = new System.Drawing.Point(24, 24);
-            this.listProduct.Margin = new System.Windows.Forms.Padding(24);
+            this.listProduct.Margin = new System.Windows.Forms.Padding(24, 24, 24, 24);
             this.listProduct.Name = "listProduct";
             this.listProduct.Size = new System.Drawing.Size(1332, 360);
             this.listProduct.TabIndex = 0;
             this.listProduct.UseCompatibleStateImageBehavior = false;
+            this.listProduct.DoubleClick += new System.EventHandler(this.btnEditProduct_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -225,40 +241,41 @@
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.AutoSize = true;
-            this.panel2.Controls.Add(this.InputProduct);
+            this.panel2.Controls.Add(this.txtCari);
             this.panel2.Location = new System.Drawing.Point(771, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(0, 0, 0, 16);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(651, 48);
             this.panel2.TabIndex = 9;
             // 
-            // InputProduct
+            // txtCari
             // 
-            this.InputProduct.BackColor = System.Drawing.Color.Transparent;
-            this.InputProduct.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(35)))), ((int)(((byte)(60)))));
-            this.InputProduct.BorderRadius = 12;
-            this.InputProduct.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.InputProduct.DefaultText = "";
-            this.InputProduct.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.InputProduct.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.InputProduct.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.InputProduct.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.InputProduct.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.InputProduct.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.InputProduct.ForeColor = System.Drawing.Color.Black;
-            this.InputProduct.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.InputProduct.Location = new System.Drawing.Point(3, 0);
-            this.InputProduct.Margin = new System.Windows.Forms.Padding(0, 0, 24, 0);
-            this.InputProduct.Name = "InputProduct";
-            this.InputProduct.PasswordChar = '\0';
-            this.InputProduct.PlaceholderForeColor = System.Drawing.Color.DimGray;
-            this.InputProduct.PlaceholderText = "Input Product";
-            this.InputProduct.SelectedText = "";
-            this.InputProduct.ShadowDecoration.BorderRadius = 1;
-            this.InputProduct.ShadowDecoration.Depth = 10;
-            this.InputProduct.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.InputProduct.Size = new System.Drawing.Size(624, 48);
-            this.InputProduct.TabIndex = 6;
+            this.txtCari.BackColor = System.Drawing.Color.Transparent;
+            this.txtCari.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(35)))), ((int)(((byte)(60)))));
+            this.txtCari.BorderRadius = 12;
+            this.txtCari.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCari.DefaultText = "";
+            this.txtCari.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtCari.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtCari.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtCari.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtCari.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtCari.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtCari.ForeColor = System.Drawing.Color.Black;
+            this.txtCari.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtCari.Location = new System.Drawing.Point(3, 0);
+            this.txtCari.Margin = new System.Windows.Forms.Padding(0, 0, 24, 0);
+            this.txtCari.Name = "txtCari";
+            this.txtCari.PasswordChar = '\0';
+            this.txtCari.PlaceholderForeColor = System.Drawing.Color.DimGray;
+            this.txtCari.PlaceholderText = "Search Data";
+            this.txtCari.SelectedText = "";
+            this.txtCari.ShadowDecoration.BorderRadius = 1;
+            this.txtCari.ShadowDecoration.Depth = 10;
+            this.txtCari.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.txtCari.Size = new System.Drawing.Size(624, 48);
+            this.txtCari.TabIndex = 6;
+            this.txtCari.TextChanged += new System.EventHandler(this.txtCari_TextChanged);
             // 
             // panel1
             // 
@@ -271,17 +288,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(183, 51);
             this.panel1.TabIndex = 4;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(24, 0);
-            this.label3.Margin = new System.Windows.Forms.Padding(24, 0, 3, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(172, 54);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Product";
             // 
             // btnDeleteProduct
             // 
@@ -336,6 +342,17 @@
             this.btnAddProduct.TabIndex = 3;
             this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(24, 0);
+            this.label3.Margin = new System.Windows.Forms.Padding(24, 0, 3, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(172, 54);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Product";
+            // 
             // Product
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -356,7 +373,6 @@
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -370,7 +386,7 @@
         private Guna.UI2.WinForms.Guna2Button btnDeleteProduct;
         private Guna.UI2.WinForms.Guna2Button btnEditProduct;
         private System.Windows.Forms.Panel panel2;
-        private Guna.UI2.WinForms.Guna2TextBox InputProduct;
+        private Guna.UI2.WinForms.Guna2TextBox txtCari;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
@@ -380,5 +396,6 @@
         private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel4;
         private System.Windows.Forms.ListView listProduct;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
