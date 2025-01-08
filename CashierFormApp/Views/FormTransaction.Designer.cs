@@ -58,8 +58,8 @@
             this.InputNIK = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ShadowPanel2 = new Guna.UI2.WinForms.Guna2ShadowPanel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelRole = new System.Windows.Forms.Label();
+            this.labelName = new System.Windows.Forms.Label();
             this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.guna2ShadowPanel1.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -563,8 +563,8 @@
             // guna2ShadowPanel2
             // 
             this.guna2ShadowPanel2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ShadowPanel2.Controls.Add(this.label2);
-            this.guna2ShadowPanel2.Controls.Add(this.label1);
+            this.guna2ShadowPanel2.Controls.Add(this.labelRole);
+            this.guna2ShadowPanel2.Controls.Add(this.labelName);
             this.guna2ShadowPanel2.Controls.Add(this.guna2CirclePictureBox1);
             this.guna2ShadowPanel2.FillColor = System.Drawing.Color.White;
             this.guna2ShadowPanel2.Location = new System.Drawing.Point(986, 30);
@@ -579,27 +579,27 @@
             this.guna2ShadowPanel2.TabIndex = 10;
             this.guna2ShadowPanel2.Click += new System.EventHandler(this.logout_click);
             // 
-            // label2
+            // labelRole
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(315, 65);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(128, 32);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "24.21.1582";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelRole.AutoSize = true;
+            this.labelRole.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRole.Location = new System.Drawing.Point(315, 65);
+            this.labelRole.Name = "labelRole";
+            this.labelRole.Size = new System.Drawing.Size(128, 32);
+            this.labelRole.TabIndex = 2;
+            this.labelRole.Text = "24.21.1582";
+            this.labelRole.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label1
+            // labelName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(194, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(264, 38);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Shabbah Athabiyyu";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelName.AutoSize = true;
+            this.labelName.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelName.Location = new System.Drawing.Point(194, 26);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(264, 38);
+            this.labelName.TabIndex = 1;
+            this.labelName.Text = "Shabbah Athabiyyu";
+            this.labelName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // guna2CirclePictureBox1
             // 
@@ -685,8 +685,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
         private Guna.UI2.WinForms.Guna2Button btnDelete;
         private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelRole;
+        private System.Windows.Forms.Label labelName;
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
         private Guna.UI2.WinForms.Guna2TextBox InputNIK;
     }
