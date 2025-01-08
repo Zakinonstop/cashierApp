@@ -11,20 +11,26 @@ namespace CashierFormApp.Views
     {
         private Dictionary<string, UserControl> userControlCache = new Dictionary<string, UserControl>(); 
         private UserControl currentControl;
+        private SessionController session;
 
         public Dashboard()
         {
             InitializeComponent();
+            session = new SessionController();
+            UpdateUsernameLabel();
             LoadUserControl("MainContent"); 
+        }
+
+        private void UpdateUsernameLabel()
+        {
+            //var session = SessionController.Instance;
+            labelUsername.Text = "123123";
+            labelRole.Text = session.Username;
         }
 
         private void LoadUserControl(string controlName)
         {
-            var Session = SessionController.Instance;
-
-            labelUsername.Text = Session.Username;
-            labelRole.Text = Session.Username;
-
+            UpdateUsernameLabel();
             if (currentControl != null && currentControl.Name == controlName)
             {
                 return; 
