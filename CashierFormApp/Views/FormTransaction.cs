@@ -43,7 +43,8 @@ namespace CashierFormApp.Views
         private List<MemberEntity> listOfMember = new List<MemberEntity>();
         private int transactionDetailId;
         private int memberId;
-        public FormTransaction()
+        private string _username;
+        public FormTransaction(string username)
         {
             InitializeComponent();
             InitializeListView();
@@ -55,6 +56,8 @@ namespace CashierFormApp.Views
 
             GetNewTransactionDetailId();
             LoadDetailTransaksi();
+            _username = username;
+            labelUsername.Text = _username;
         }
 
         private void InitializeListView()
@@ -85,7 +88,7 @@ namespace CashierFormApp.Views
             var Session = SessionController.Instance;
 
             labelUsername.Text = Session.Username;
-            labelRole.Text = Session.Username;
+            labelRole.Text = "Kasir";
         }
 
         private void AdjustColumnWidths()

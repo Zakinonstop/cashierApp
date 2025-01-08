@@ -24,8 +24,8 @@ namespace CashierFormApp.View
             Dashboard dashboard = new Dashboard();
             dashboard.FormClosed += (s, args) => Application.Exit();
 
-            FormTransaction formTransaction = new FormTransaction();
-            formTransaction.FormClosed += (s, args) => Application.Exit();
+            //FormTransaction formTransaction = new FormTransaction();
+            //formTransaction.FormClosed += (s, args) => Application.Exit();
 
             AuthController authController = new AuthController();
 
@@ -44,6 +44,10 @@ namespace CashierFormApp.View
                 }
                 else if (Session.RoleId == 1) 
                 {
+                    FormTransaction formTransaction = new FormTransaction(Session.Username);
+                    formTransaction.FormClosed += (s, args) => Application.Exit();
+
+                    //var formTransaction = new FormTransaction(Session.Username);
                     formTransaction.Show();
                     this.Hide();
                 }
