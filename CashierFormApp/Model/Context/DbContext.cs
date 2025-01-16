@@ -28,7 +28,9 @@ namespace CashierFormApp.Model.Context
 
             try
             {
-                string myConnectionString = "server=127.0.0.1;uid=root;pwd=;database=cashierdb";
+                //string myConnectionString = @"server=127.0.0.1;uid=root;pwd=;database=cashierdb";
+
+                string myConnectionString = "server=103.29.214.199;uid=nonstops_kasir;pwd=}U-Kc]p3PxI};database=nonstops_kasir";
                 conn = new MySqlConnection(myConnectionString);
                 conn.Open();
             }
